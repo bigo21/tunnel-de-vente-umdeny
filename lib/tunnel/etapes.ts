@@ -18,7 +18,7 @@ const NUMERO_ETAPE: Record<Vue, number> = {
 const LIBELLE_ETAPE: Record<Vue, string> = {
   accueil: "Étape 1 · Bienvenue",
   menu: "Étape 2 · Choisir un sujet",
-  theme: "Étape 2 · Le film",
+  theme: "Étape 2 · Vidéo",
   formulaire: "Étape 3 · Formulaire",
   confirmation: "Étape 4 · Confirmation",
 };

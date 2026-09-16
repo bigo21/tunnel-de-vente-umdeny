@@ -1,63 +1,78 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Charte Umdeny Capital.
+   Charte Vireel.
 
    Tout ce qui distingue une version de marque de l'autre est ici, en tokens
-   sémantiques. Basculer sur la charte Vireel se fait en réécrivant ce bloc —
-   aucun composant ne connaît une couleur en dur.
+   sémantiques. Les composants ne connaissent aucune couleur, aucune police et
+   aucun rayon en dur.
 
-   Référence : « Charte Graphique Umdeny Capital », pages 04 (couleurs) et 06
-   (typographie). Répartition visée : ~70 % bleu, 20 % blancs et gris bleutés,
-   10 % or. L'or reste un signal, jamais un aplat de confort.
+   Référence : « Charte Graphique Vireel », pages 04 (couleurs) et 06
+   (typographie), appliquées au fond sombre du parcours. Répartition visée :
+   l'orange reste un signal — action, jalon actif, chiffre clé — jamais un
+   aplat de confort.
 --------------------------------------------------------------------------- */
 @theme {
-  --font-titre: var(--police-titre), "Century Gothic", system-ui, sans-serif;
-  --font-texte: var(--police-texte), Georgia, serif;
+  --font-titre: var(--police-titre), "Helvetica Neue", Arial, sans-serif;
+  --font-texte: var(--police-texte), "Helvetica Neue", Arial, sans-serif;
 
   /* Fonds, du plus profond au plus relevé. */
-  --color-fond: #030929;
-  --color-fond-media: #050b22;
-  --color-fond-carte: #060c26;
-  --color-fond-carte-haut: #0a1138;
+  --color-fond: #08090a;
+  --color-fond-media: #0b0c0d;
+  --color-fond-carte: #0e1112;
+  --color-fond-carte-haut: #101314;
 
   /* Filets et bordures. */
-  --color-bordure: #1c2450;
-  --color-bordure-forte: #2e376b;
+  --color-bordure: #1b1e1f;
+  --color-bordure-forte: #2a2e2f;
 
   /* Encres, du plus contrasté au plus discret. */
   --color-encre: #ffffff;
-  --color-encre-douce: #b9c0dc;
-  --color-encre-tenue: #9aa2c4;
-  --color-encre-sourde: #8a92b8;
-  --color-encre-faible: #6e77a0;
+  --color-encre-douce: #dad6d2;
+  --color-encre-tenue: #abadad;
+  --color-encre-sourde: #8a8681;
+  --color-encre-faible: #4e5253;
 
   /* Accent de marque. */
-  --color-accent: #c08f51;
-  --color-accent-clair: #dfb56d;
-  --color-accent-fonce: #9e6632;
-  --color-sur-accent: #030929;
+  --color-accent: #dd6316;
+  --color-accent-clair: #f68853;
+  --color-accent-fonce: #bc5213;
+  --color-sur-accent: #ffffff;
+
+  /* La charte Vireel pose un rayon de 2px sur les surfaces et les actions. */
+  --radius-marque: 2px;
 }
 
-/* Valeurs non exprimables en tokens Tailwind : dégradé et ombre de marque. */
 :root {
-  --degrade-accent: linear-gradient(140deg, #dfb56d, #9e6632);
-  --ombre-accent: 0 18px 50px rgba(3, 9, 41, 0.6);
-  --voile-media: linear-gradient(
-    180deg,
-    rgba(3, 9, 41, 0.6) 0%,
-    rgba(3, 9, 41, 0.28) 42%,
-    rgba(3, 9, 41, 0.93) 100%
+  /* Vireel pose l'orange en aplat, là où Umdeny posait un dégradé. */
+  --fond-accent: var(--color-accent);
+  --fond-accent-survol: var(--color-accent-fonce);
+  --ombre-accent: 0 0 0 12px rgba(221, 99, 22, 0.14);
+  --fond-media: radial-gradient(
+    120% 120% at 50% 40%,
+    #15181a 0%,
+    #0b0c0d 70%,
+    #000000 100%
+  );
+  --texture-media: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.022) 0 14px,
+    transparent 14px 28px
+  );
+  --fond-confirmation: radial-gradient(
+    110% 120% at 50% 0%,
+    #2a1004 0%,
+    #111314 60%,
+    #08090a 100%
   );
 }
 
 body {
   background: var(--color-fond);
   color: var(--color-encre);
-  font-family: var(--font-titre);
+  font-family: var(--font-texte);
 }
 
-/* La charte impose un focus visible dessiné, jamais l'anneau bleu du navigateur. */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
@@ -68,10 +83,28 @@ body {
   color: var(--color-sur-accent);
 }
 
+/* ---------------------------------------------------------------------------
+   Typographie.
+
+   Archivo Black porte les titres, Archivo le reste. La charte est explicite :
+   la famille n'a pas de vrai italique, on emphase en 600.
+--------------------------------------------------------------------------- */
+@utility titre {
+  font-family: var(--font-titre);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+@utility surtitre {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 @keyframes entree {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -79,19 +112,17 @@ body {
   }
 }
 
-@keyframes reflet {
+@keyframes balayage {
   from {
-    transform: translateX(-120%);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(220%);
+    transform: translateX(100%);
   }
 }
 
-/* Chaque écran du tunnel entre par le bas — sauf si l'utilisateur a demandé
-   à réduire les animations. */
 @utility anim-entree {
-  animation: entree 0.5s ease both;
+  animation: entree 0.45s ease both;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -99,20 +130,19 @@ body {
 }
 
 @utility reflet-media {
-  animation: reflet 7s linear infinite;
+  animation: balayage 6s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
 }
 
-/* Le bouton or : fond dégradé, texte bleu nuit. Réservé à l'action principale
-   d'un écran — un seul par écran. */
-@utility bouton-or {
-  background: var(--degrade-accent);
+/* L'action principale d'un écran — une seule par écran. */
+@utility bouton-accent {
+  background: var(--fond-accent);
   color: var(--color-sur-accent);
 
   &:hover {
-    filter: brightness(1.08);
+    background: var(--fond-accent-survol);
   }
 }

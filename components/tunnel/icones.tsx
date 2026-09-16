@@ -54,3 +54,21 @@ export function IconeWhatsApp({ taille = 20 }: { taille?: number }) {
     </svg>
   );
 }
+
+export function IconeValide({ taille = 46 }: { taille?: number }) {
+  return (
+    <svg
+      width={taille}
+      height={taille}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="square"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M7.5 12.5l3 3 6-6.5" />
+    </svg>
+  );
+}

@@ -1,25 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Jost, Spectral } from "next/font/google";
+import { Archivo, Archivo_Black } from "next/font/google";
 import { MARQUE } from "@/content/marque";
 import "./globals.css";
 
 /**
- * Charte Umdeny Capital, page 06 : Jost porte les titres, les surtitres et
- * l'interface ; Spectral prend tout le texte long. Les substitutions de la
- * charte (Century Gothic, Georgia) sont déclarées dans `globals.css`.
+ * Charte Vireel, page 06 : une seule famille pour tout le système. Archivo
+ * Black porte les titres, Archivo 400/500/600 porte le reste. La substitution
+ * prévue par la charte (Helvetica Neue, Arial) est déclarée dans
+ * `globals.css` — jamais une police à empattements.
  */
-const jost = Jost({
+const archivoBlack = Archivo_Black({
   variable: "--police-titre",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: "400",
   display: "swap",
 });
 
-const spectral = Spectral({
+const archivo = Archivo({
   variable: "--police-texte",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#030929",
+  themeColor: "#08090a",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${jost.variable} ${spectral.variable} h-full antialiased`}
+      className={`${archivoBlack.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>

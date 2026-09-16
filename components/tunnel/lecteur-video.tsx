@@ -27,22 +27,22 @@ export function LecteurVideo({ onFermer }: { onFermer: () => void }) {
       role="dialog"
       aria-modal
       aria-label={MARQUE.lecteur.titre}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-[rgba(2,5,20,0.95)] p-[clamp(16px,4vw,44px)]"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-[18px] bg-[rgba(4,5,5,0.94)] p-[clamp(16px,4vw,40px)]"
     >
       <div
-        className="flex aspect-video w-full max-w-[1120px] flex-col items-center justify-center gap-[14px] border border-dashed border-bordure-forte p-5 text-center"
+        className="flex aspect-video w-full max-w-[1100px] flex-col items-center justify-center gap-3 border border-dashed border-encre-faible p-5 text-center"
         style={{
           background:
-            "repeating-linear-gradient(135deg, var(--color-fond-carte-haut) 0 14px, var(--color-fond-carte) 14px 28px)",
+            "repeating-linear-gradient(135deg, #111415 0 14px, var(--color-fond-media) 14px 28px)",
         }}
       >
         <span className="text-encre-sourde">
           <IconeEcran />
         </span>
-        <span className="text-[11px] uppercase tracking-[0.22em] text-encre-sourde">
+        <span className="text-[12px] uppercase tracking-[0.16em] text-encre-sourde">
           {MARQUE.lecteur.titre}
         </span>
-        <span className="font-texte max-w-[42ch] text-[14px] leading-relaxed text-encre-faible">
+        <span className="max-w-[40ch] text-[13px] leading-[1.55] text-encre-faible">
           {MARQUE.lecteur.mention}
         </span>
       </div>
@@ -50,7 +50,7 @@ export function LecteurVideo({ onFermer }: { onFermer: () => void }) {
         ref={fermeture}
         type="button"
         onClick={onFermer}
-        className="cursor-pointer border border-bordure-forte px-6 py-[13px] text-[14px] font-medium tracking-[0.03em] transition-colors hover:border-accent hover:text-accent-clair"
+        className="cursor-pointer rounded-marque border border-encre-faible px-[22px] py-3 text-[14px] font-semibold transition-colors hover:border-accent hover:text-accent-clair"
       >
         Fermer le lecteur
       </button>

@@ -13,7 +13,6 @@ import { EcranMenu } from "./ecran-menu";
 import { EcranTheme } from "./ecran-theme";
 import { EnTete } from "./en-tete";
 import { LecteurVideo } from "./lecteur-video";
-import { PiedDePage } from "./pied-de-page";
 
 type EtatTunnel = {
   vue: Vue;
@@ -168,8 +167,6 @@ export function Tunnel() {
           onRetourMenu={retourMenu}
         />
       )}
-
-      <PiedDePage />
 
       {lecteurOuvert && <LecteurVideo onFermer={fermerLecteur} />}
     </div>
