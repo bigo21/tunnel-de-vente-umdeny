@@ -12,7 +12,19 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Maquettes Claude Design : du HTML/JS généré, hors périmètre du lint.
+    "mockup_Tunnel_Umdeny/**",
   ]),
+  {
+    rules: {
+      // Les paramètres préfixés d'un `_` marquent une signature volontairement
+      // plus large que son implémentation actuelle (cf. `lib/tunnel/envoi.ts`).
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+    },
+  },
 ]);
 
 export default eslintConfig;

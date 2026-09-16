@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Charte Umdeny Capital.
+
+   Tout ce qui distingue une version de marque de l'autre est ici, en tokens
+   sémantiques. Basculer sur la charte Vireel se fait en réécrivant ce bloc —
+   aucun composant ne connaît une couleur en dur.
+
+   Référence : « Charte Graphique Umdeny Capital », pages 04 (couleurs) et 06
+   (typographie). Répartition visée : ~70 % bleu, 20 % blancs et gris bleutés,
+   10 % or. L'or reste un signal, jamais un aplat de confort.
+--------------------------------------------------------------------------- */
+@theme {
+  --font-titre: var(--police-titre), "Century Gothic", system-ui, sans-serif;
+  --font-texte: var(--police-texte), Georgia, serif;
+
+  /* Fonds, du plus profond au plus relevé. */
+  --color-fond: #030929;
+  --color-fond-media: #050b22;
+  --color-fond-carte: #060c26;
+  --color-fond-carte-haut: #0a1138;
+
+  /* Filets et bordures. */
+  --color-bordure: #1c2450;
+  --color-bordure-forte: #2e376b;
+
+  /* Encres, du plus contrasté au plus discret. */
+  --color-encre: #ffffff;
+  --color-encre-douce: #b9c0dc;
+  --color-encre-tenue: #9aa2c4;
+  --color-encre-sourde: #8a92b8;
+  --color-encre-faible: #6e77a0;
+
+  /* Accent de marque. */
+  --color-accent: #c08f51;
+  --color-accent-clair: #dfb56d;
+  --color-accent-fonce: #9e6632;
+  --color-sur-accent: #030929;
+}
+
+/* Valeurs non exprimables en tokens Tailwind : dégradé et ombre de marque. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --degrade-accent: linear-gradient(140deg, #dfb56d, #9e6632);
+  --ombre-accent: 0 18px 50px rgba(3, 9, 41, 0.6);
+  --voile-media: linear-gradient(
+    180deg,
+    rgba(3, 9, 41, 0.6) 0%,
+    rgba(3, 9, 41, 0.28) 42%,
+    rgba(3, 9, 41, 0.93) 100%
+  );
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-fond);
+  color: var(--color-encre);
+  font-family: var(--font-titre);
+}
+
+/* La charte impose un focus visible dessiné, jamais l'anneau bleu du navigateur. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-sur-accent);
+}
+
+@keyframes entree {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reflet {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(220%);
+  }
+}
+
+/* Chaque écran du tunnel entre par le bas — sauf si l'utilisateur a demandé
+   à réduire les animations. */
+@utility anim-entree {
+  animation: entree 0.5s ease both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@utility reflet-media {
+  animation: reflet 7s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* Le bouton or : fond dégradé, texte bleu nuit. Réservé à l'action principale
+   d'un écran — un seul par écran. */
+@utility bouton-or {
+  background: var(--degrade-accent);
+  color: var(--color-sur-accent);
+
+  &:hover {
+    filter: brightness(1.08);
+  }
 }
