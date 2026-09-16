@@ -32,7 +32,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "ecosysteme",
         numero: "01",
-        duree: "1 min 30",
+        video: { id: "TLkA0RELQ1g", duree: "1 min 30" },
         titre: "L'écosystème Umdeny Capital",
         accroche:
           "Comment quatre activités du groupe se financent et s'alimentent entre elles.",
@@ -47,7 +47,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "mobile-money",
         numero: "02",
-        duree: "2 min",
+        video: { id: "Y-rmzh0PI3c", duree: "2 min" },
         titre: "Distributeur Mobile Money",
         accroche:
           "Financer un point de distribution opéré par Vireel, être rémunéré sur les commissions.",
@@ -65,7 +65,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "wifi",
         numero: "03",
-        duree: "1 min 45",
+        video: { id: "WhWc3b3KhnY", duree: "1 min 45" },
         titre: "Borne WiFi Zone",
         accroche:
           "Équiper un lieu de passage en accès payant et percevoir une part des connexions.",
@@ -80,7 +80,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "financement-participatif",
         numero: "04",
-        duree: "2 min 10",
+        video: { id: "SkVqJ1SGeL0", duree: "2 min 10" },
         titre: "Financement participatif",
         accroche:
           "Prêter à des entreprises instruites par le groupe, avec échéancier et garanties écrites.",
@@ -95,7 +95,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "bourse",
         numero: "05",
-        duree: "2 min",
+        video: { id: "R6MlUcmOul8", duree: "2 min" },
         titre: "Bourse — actions, obligations, ETF",
         accroche:
           "Être accompagné pour ouvrir un compte-titres et tenir une méthode dans la durée.",
@@ -137,7 +137,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "role-apporteur",
         numero: "01",
-        duree: "1 min 40",
+        video: { id: "mN0zPOpADL4", duree: "1 min 40" },
         titre: "Le rôle d'apporteur d'affaires",
         accroche:
           "Ce qui est attendu de vous, ce qui vous est versé, et à quel moment.",
@@ -152,7 +152,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
       {
         cle: "ip-dedie",
         numero: "02",
-        duree: "1 min 30",
+        video: { id: "_cMxraX_5RE", duree: "1 min 30" },
         titre: "Internet IP Dédié",
         accroche: "L'offre que vous portez auprès des entreprises, opérée par Vireel.",
         contexte:

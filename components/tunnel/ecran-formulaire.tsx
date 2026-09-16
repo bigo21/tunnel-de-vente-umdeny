@@ -3,8 +3,9 @@
 import { MARQUE } from "@/content/marque";
 import type { Demande, Parcours } from "@/lib/tunnel/types";
 
+// 16px minimum sur mobile : en dessous, iOS zoome à la mise au point du champ.
 const CLASSE_CHAMP =
-  "min-w-0 border border-bordure-forte bg-fond-carte p-[14px] font-texte text-[15px] text-encre placeholder:text-encre-faible";
+  "min-h-12 min-w-0 border border-bordure-forte bg-fond-carte p-[14px] font-texte text-base text-encre placeholder:text-encre-faible sm:text-[15px]";
 const CLASSE_INTITULE =
   "text-[11px] uppercase tracking-[0.14em] text-encre-douce";
 
@@ -42,7 +43,7 @@ export function EcranFormulaire({
     parcours.teinte === "accent" ? "text-accent-clair" : "text-encre";
 
   return (
-    <main className="anim-entree flex flex-1 justify-center px-[clamp(16px,4vw,52px)] pb-[clamp(40px,6vw,72px)] pt-[clamp(26px,4vw,56px)]">
+    <main className="flex flex-1 justify-center px-4 pb-12 pt-7 sm:px-[clamp(16px,4vw,52px)] sm:pb-[clamp(40px,6vw,72px)] sm:pt-[clamp(26px,4vw,56px)]">
       <form
         noValidate
         onSubmit={(e) => {
@@ -157,7 +158,7 @@ export function EcranFormulaire({
             checked={demande.consentement}
             onChange={(e) => onChange({ consentement: e.target.checked })}
             aria-invalid={erreur !== null && !demande.consentement}
-            className="mt-0.5 size-5 flex-none accent-accent"
+            className="mt-0.5 size-6 flex-none accent-accent sm:size-5"
           />
           <span>{MARQUE.formulaire.consentement}</span>
         </label>
@@ -171,18 +172,18 @@ export function EcranFormulaire({
           </p>
         )}
 
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center">
           <button
             type="submit"
             disabled={enCours}
-            className="bouton-or cursor-pointer px-[30px] py-4 text-[15px] font-semibold tracking-[0.03em] disabled:cursor-progress disabled:opacity-70"
+            className="bouton-or min-h-12 w-full cursor-pointer px-[30px] py-4 text-[15px] font-semibold tracking-[0.03em] disabled:cursor-progress disabled:opacity-70 sm:w-auto"
           >
             {enCours ? "Envoi en cours…" : "Envoyer ma demande"}
           </button>
           <button
             type="button"
             onClick={onRetour}
-            className="cursor-pointer border-b border-bordure-forte py-2 text-[13.5px] text-encre-sourde transition-colors hover:text-accent-clair"
+            className="inline-flex min-h-11 cursor-pointer items-center justify-center text-[13.5px] text-encre-sourde underline decoration-bordure-forte underline-offset-[6px] transition-colors hover:text-accent-clair hover:decoration-accent"
           >
             Revenir à la vidéo
           </button>

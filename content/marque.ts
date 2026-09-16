@@ -26,6 +26,8 @@ export const MARQUE = {
     intro:
       "Regardez d'abord, lisez ensuite. Chaque sujet tient dans une vidéo courte ; le texte n'est là que pour préciser. Vos coordonnées ne sont demandées qu'à la dernière étape.",
     libelleVideo: "Film d'introduction · 90 secondes",
+    /** Big Buck Bunny — vidéo de test, à remplacer par le film d'accueil. */
+    video: { id: "aqz-KE-bpKQ", duree: "90 secondes" },
     /** Un seul de ces chiffres est mis en or par écran — voir la charte. */
     chiffresCles: [
       { valeur: "04", legende: "activités opérées ou financées par le groupe." },
@@ -80,8 +82,6 @@ export const MARQUE = {
   piedDePage: "Umdeny Capital — Vireel est une filiale du groupe.",
 
   lecteur: {
-    titre: "Lecteur vidéo — contenu à fournir",
-    mention:
-      "L'emplacement reste marqué comme temporaire jusqu'à la livraison des films définitifs.",
+    mentionProvisoire: "Vidéo de test — le film définitif reste à fournir",
   },
 } as const;

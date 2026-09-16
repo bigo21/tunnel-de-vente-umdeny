@@ -1,3 +1,5 @@
+import type { Video } from "./video";
+
 /**
  * Types du tunnel de vente. Volontairement indépendants de la marque : la
  * version Vireel réutilise ces structures et ne remplace que le contenu
@@ -11,8 +13,8 @@ export type Theme = {
   cle: string;
   /** Numéro affiché sur la vignette, sur deux chiffres. */
   numero: string;
-  /** Durée annoncée de la vidéo, ex. « 1 min 45 ». */
-  duree: string;
+  /** La vidéo YouTube du sujet : identifiant et durée annoncée. */
+  video: Video;
   titre: string;
   accroche: string;
   contexte: string;

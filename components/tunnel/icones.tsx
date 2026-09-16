@@ -14,25 +14,6 @@ export function IconeLecture({ taille = 24 }: { taille?: number }) {
   );
 }
 
-export function IconeEcran({ taille = 40 }: { taille?: number }) {
-  return (
-    <svg
-      width={taille}
-      height={taille}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="square"
-      aria-hidden
-    >
-      <path d="M4 4h16v13H4z" />
-      <path d="M10 8l5 2.5-5 2.5z" fill="currentColor" stroke="none" />
-      <path d="M8 21h8" />
-    </svg>
-  );
-}
-
 export function IconeWhatsApp({ taille = 20 }: { taille?: number }) {
   return (
     <svg
