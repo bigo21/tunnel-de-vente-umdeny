@@ -9,8 +9,6 @@
 
 export const MARQUE = {
   nom: "Umdeny Capital",
-  /** Désignation courte de la filiale, reprise dans les mentions. */
-  filiale: "Vireel",
 
   logo: {
     /** Lockup blanc, pour le bleu nuit de la charte. */
@@ -28,7 +26,7 @@ export const MARQUE = {
   couleurNavigateur: "#030929",
 
   meta: {
-    titre: "Umdeny Capital — le capital placé là où l'économie se fabrique",
+    titre: "Parcours de l'écosystème Umdeny Capital",
     description:
       "Des activités concrètes, un film court par sujet, un conseiller qui vous rappelle sous 48 heures ouvrées. Aucun versement sur ce site : tout passe par un contrat écrit.",
   },
@@ -36,7 +34,7 @@ export const MARQUE = {
   couverture: {
     titre: "Le capital placé là où l'économie se fabrique.",
     chapeau:
-      "Umdeny Capital opère ou finance des activités concrètes, avec sa filiale Vireel. Chaque sujet tient dans un film court. Vos coordonnées ne sont demandées qu'à la fin.",
+      "Le parcours de l'écosystème Umdeny : des activités concrètes que le groupe opère ou finance. Chaque sujet tient dans un film court. Vos coordonnées ne sont demandées qu'à la fin.",
     /** Titre du choix de branche, lu par les lecteurs d'écran seulement. */
     choisir: "Choisir votre parcours",
     /** Les trois engagements, en une ligne, dans le premier écran. */
@@ -193,7 +191,12 @@ export const MARQUE = {
   },
 
   piedDePage: {
-    groupe: "Umdeny Capital — Vireel est une filiale du groupe.",
+    groupe: "Umdeny Capital — parcours de l'écosystème.",
+    /**
+     * Le visiteur arrive le plus souvent depuis les réseaux sociaux animés par
+     * Vireel : cette ligne relie les deux noms pour qu'il sache où il est.
+     */
+    visibilite: "Vous nous avez peut-être découverts par Vireel : c'est la marque qui anime nos réseaux sociaux.",
     mention:
       "Ce site ne recueille aucun paiement. Toute opération fait l'objet d'un contrat écrit, remis après un entretien avec un conseiller.",
   },

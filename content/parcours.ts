@@ -40,7 +40,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         probleme:
           "Opacité des conditions, ticket d'entrée hors de portée, et personne pour expliquer ce que l'on signe réellement.",
         solution:
-          "Umdeny Capital opère ou finance quatre activités — dont celles portées par sa filiale Vireel — avec des conditions écrites et un entretien de qualification avant tout engagement.",
+          "Umdeny Capital opère ou finance quatre activités, avec des conditions écrites et un entretien de qualification avant tout engagement.",
         formulaires: ["Vérifier mon profil investisseur"],
       },
       {
@@ -49,13 +49,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "Y-rmzh0PI3c", duree: "2 min" },
         titre: "Distributeur Mobile Money",
         accroche:
-          "Financer un point de distribution opéré par Vireel, être rémunéré sur les commissions.",
+          "Financer un point de distribution et être rémunéré sur les commissions.",
         contexte:
           "Le paiement mobile est devenu le premier moyen de transfert de la région : chaque quartier a besoin de points de dépôt et de retrait approvisionnés en liquidité toute la journée.",
         probleme:
           "Ouvrir un point demande un fonds de roulement permanent et une présence quotidienne. Beaucoup ont l'emplacement sans le capital, ou le capital sans le temps.",
         solution:
-          "Vous financez le fonds de roulement d'un point exploité par Vireel. Exploitation, trésorerie et reporting sont pris en charge ; votre rémunération suit les commissions encaissées, détaillées chaque mois.",
+          "Vous financez le fonds de roulement d'un point de distribution exploité pour vous. Exploitation, trésorerie et reporting sont pris en charge ; votre rémunération suit les commissions encaissées, détaillées chaque mois.",
         formulaires: [
           "Vérifier mon profil investisseur",
           "Recevoir le document détaillé",
@@ -73,7 +73,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         probleme:
           "Une borne suppose du matériel, un abonnement de gros et une maintenance régulière — hors de portée d'un particulier isolé.",
         solution:
-          "Vireel déploie et maintient les bornes. Vous financez une ou plusieurs zones et percevez une part des connexions vendues, avec un relevé borne par borne.",
+          "Les bornes sont déployées et maintenues pour vous. Vous financez une ou plusieurs zones et percevez une part des connexions vendues, avec un relevé borne par borne.",
         formulaires: ["Vérifier mon profil investisseur", "Demande de cotation"],
       },
       {
@@ -152,7 +152,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         numero: "02",
         video: { id: "_cMxraX_5RE", duree: "1 min 30" },
         titre: "Internet IP Dédié",
-        accroche: "L'offre que vous portez auprès des entreprises, opérée par Vireel.",
+        accroche: "L'offre que vous portez auprès des entreprises.",
         contexte:
           "Banques, cliniques, hôtels, sociétés de services : leur activité s'arrête quand la connexion tombe, et le partagé grand public ne tient pas cette exigence.",
         probleme:

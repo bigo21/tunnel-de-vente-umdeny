@@ -14,7 +14,8 @@ export const WHATSAPP = {
   conseiller: process.env.NEXT_PUBLIC_WHATSAPP_CONSEILLER || null,
   chaine: process.env.NEXT_PUBLIC_WHATSAPP_CHAINE || null,
   titre: "En attendant l'appel",
-  libelleConseiller: "Écrire à un conseiller sur WhatsApp",
-  libelleChaine: "Rejoindre la chaîne de suivi Umdeny Capital",
+  libelleConseiller: "Écrire à un conseiller Umdeny sur WhatsApp",
+  /** La chaîne de suivi est celle de Vireel, qui anime les réseaux sociaux. */
+  libelleChaine: "Rejoindre la chaîne de suivi Vireel",
   mentionAFournir: "Lien à fournir par Umdeny Capital.",
 } as const;

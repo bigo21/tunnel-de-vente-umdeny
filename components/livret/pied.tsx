@@ -19,6 +19,9 @@ export function Pied() {
             {MARQUE.piedDePage.groupe}
           </p>
           <p className="text-mention text-encre-sourde">
+            {MARQUE.piedDePage.visibilite}
+          </p>
+          <p className="text-mention text-encre-sourde">
             {MARQUE.piedDePage.mention}
           </p>
         </div>

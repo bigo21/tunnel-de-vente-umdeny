@@ -17,20 +17,22 @@ Le brief initial mentionnait des « porteurs de projet cherchant un financement 
 
 ## Product Purpose
 
-Un tunnel de vente d'une seule page qui transforme une visite en **demande de rappel qualifiée**. Le visiteur repart en ayant compris une opportunité (grâce à une vidéo courte par sujet), en ayant confiance, et avec la promesse d'un appel d'un conseiller sous 48 heures ouvrées.
+Présenté aux clients comme le **Parcours de l'écosystème Umdeny** : un tunnel de vente qui transforme une visite en **demande de rappel qualifiée**. Le visiteur repart en ayant compris une opportunité (grâce à une vidéo courte par sujet), en ayant confiance, et avec la promesse d'un appel d'un conseiller sous 48 heures ouvrées.
 
 Le succès se mesure au nombre de demandes complètes : nom, téléphone, consentement et réponse à la question de qualification de la branche.
 
 ## Positioning
 
-Umdeny Capital est un groupe d'investissement dont Vireel est la filiale opérationnelle. L'argent placé est adossé à des activités concrètes que le groupe opère ou finance (distribution Mobile Money, bornes WiFi, financement participatif de PME instruites, accompagnement boursier, liaisons Internet dédiées pour entreprises). Rien ne se signe ni ne se verse en ligne : tout passe par un entretien, puis par un contrat écrit.
+Umdeny Capital est un groupe d'investissement. **Vireel est la marque qui gère ses réseaux sociaux et sa visibilité** (précision de l'utilisateur du 2026-09-22) : Vireel n'est pas l'exploitant des activités, et le tunnel ne doit pas le présenter ainsi. Qui exploite concrètement chaque activité (points Mobile Money, bornes WiFi, instruction des dossiers, installation de l'IP dédié) reste à préciser : d'ici là, les textes ne nomment pas d'exploitant. L'argent placé est adossé à des activités concrètes que le groupe opère ou finance (distribution Mobile Money, bornes WiFi, financement participatif de PME instruites, accompagnement boursier, liaisons Internet dédiées pour entreprises). Rien ne se signe ni ne se verse en ligne : tout passe par un entretien, puis par un contrat écrit.
 
 ## Operating Context
 
+- Acquisition : contenus organiques et publicité sur les réseaux sociaux animés par Vireel, un lien unique (en bio ou dans le message) vers la page d'atterrissage Umdeny.
 - Parcours : accueil → choix de la branche → choix d'un sujet → film et triptyque Contexte / Problème / Solution → demande → confirmation.
 - Les films sont hébergés sur YouTube et lus sur le domaine sans cookie, seulement après un geste du visiteur.
+- Après envoi, la page de félicitation propose deux liens WhatsApp : le contact direct avec un conseiller Umdeny et la chaîne de suivi **Vireel**.
 - Après envoi, un conseiller rappelle sous 48 heures ouvrées ; les conditions écrites (montant, durée, rémunération, sortie) précèdent tout versement.
-- La même base de code servira une version Vireel : la marque vit uniquement dans `app/globals.css` (tokens) et `content/` (textes, logos).
+- La marque vit uniquement dans `app/globals.css` (tokens) et `content/` (textes, logos), pour pouvoir décliner la base. L'existence d'une version « Vireel » du tunnel, décidée quand Vireel passait pour la filiale opérationnelle, est à reconfirmer depuis la précision du 2026-09-22.
 
 ## Capabilities and Constraints
 
