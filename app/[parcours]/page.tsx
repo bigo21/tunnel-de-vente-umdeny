@@ -41,6 +41,9 @@ export default async function PageSommaire({
           >
             {parcours.titreMenu}
           </h1>
+          <p data-entree className="font-titre text-mention text-encre-sourde livret:col-span-7 livret:row-start-2">
+            {MARQUE.sommaire.guide}
+          </p>
           <p data-entree className="font-titre text-mention text-encre-douce livret:col-span-5 livret:justify-self-end livret:text-right">
             {parcours.carteAccueil.titre}
             <span aria-hidden="true" className="px-2 text-reglure-forte">

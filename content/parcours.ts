@@ -4,9 +4,12 @@ import type { CleParcours, Parcours } from "@/lib/tunnel/types";
  * Les deux branches du tunnel et leurs sujets, repris de la maquette
  * « Parcours Umdeny Capital ».
  *
- * Les textes Contexte / Problème / Solution sont encore indicatifs : la
- * rédaction définitive est en cours côté client. Leur longueur est en
- * revanche représentative et sert de garde-fou à la mise en page.
+ * Les textes sont une ÉBAUCHE : le client fournira la rédaction définitive.
+ *
+ * Règle éditoriale (client, 2026-09-22) : la vidéo est la source principale
+ * d'explication. Le texte oriente le prospect dans le tunnel et appuie un
+ * point : une à deux phrases courtes par champ, des mots simples, aucun
+ * chiffre ni promesse qui ne vienne du client.
  */
 export const PARCOURS: Record<CleParcours, Parcours> = {
   investisseur: {
@@ -34,13 +37,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "TLkA0RELQ1g", duree: "1 min 30" },
         titre: "L'écosystème Umdeny Capital",
         accroche:
-          "Comment quatre activités du groupe se financent et s'alimentent entre elles.",
+          "Quatre activités, un même groupe : la vue d'ensemble avant de choisir.",
         contexte:
-          "L'épargne disponible est nombreuse, les véhicules lisibles beaucoup moins : entre le livret qui ne rapporte rien et les promesses invérifiables, il manque une offre adossée à des activités que l'on peut aller voir.",
+          "Beaucoup d'épargne dort, faute de placements clairs et vérifiables.",
         probleme:
-          "Opacité des conditions, ticket d'entrée hors de portée, et personne pour expliquer ce que l'on signe réellement.",
+          "Conditions floues, ticket d'entrée trop élevé, et personne pour expliquer ce que l'on signe.",
         solution:
-          "Umdeny Capital opère ou finance quatre activités, avec des conditions écrites et un entretien de qualification avant tout engagement.",
+          "Umdeny Capital opère ou finance quatre activités concrètes. Des conditions écrites, et un entretien avant tout engagement.",
         formulaires: ["Vérifier mon profil investisseur"],
       },
       {
@@ -49,13 +52,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "Y-rmzh0PI3c", duree: "2 min" },
         titre: "Distributeur Mobile Money",
         accroche:
-          "Financer un point de distribution et être rémunéré sur les commissions.",
+          "Financer un point de dépôt et de retrait, et être rémunéré sur les commissions.",
         contexte:
-          "Le paiement mobile est devenu le premier moyen de transfert de la région : chaque quartier a besoin de points de dépôt et de retrait approvisionnés en liquidité toute la journée.",
+          "Le paiement mobile est le premier moyen de transfert de la région. Chaque quartier a besoin de points de service.",
         probleme:
-          "Ouvrir un point demande un fonds de roulement permanent et une présence quotidienne. Beaucoup ont l'emplacement sans le capital, ou le capital sans le temps.",
+          "Un point demande un fonds de roulement permanent et une présence chaque jour.",
         solution:
-          "Vous financez le fonds de roulement d'un point de distribution exploité pour vous. Exploitation, trésorerie et reporting sont pris en charge ; votre rémunération suit les commissions encaissées, détaillées chaque mois.",
+          "Vous financez le fonds de roulement, l'exploitation est prise en charge. Votre rémunération suit les commissions, avec un relevé chaque mois.",
         formulaires: [
           "Vérifier mon profil investisseur",
           "Recevoir le document détaillé",
@@ -67,13 +70,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "WhWc3b3KhnY", duree: "1 min 45" },
         titre: "Borne WiFi Zone",
         accroche:
-          "Équiper un lieu de passage en accès payant et percevoir une part des connexions.",
+          "Financer des bornes Wi-Fi dans des lieux de passage, et percevoir une part des connexions.",
         contexte:
-          "Marchés, gares routières, campus, quartiers résidentiels : la demande de connexion est continue, quand les forfaits mobiles restent chers à l'usage prolongé.",
+          "Marchés, gares, campus : on a besoin de connexion toute la journée, et les forfaits mobiles coûtent cher.",
         probleme:
-          "Une borne suppose du matériel, un abonnement de gros et une maintenance régulière — hors de portée d'un particulier isolé.",
+          "Une borne demande du matériel, un abonnement et de l'entretien : difficile à tenir seul.",
         solution:
-          "Les bornes sont déployées et maintenues pour vous. Vous financez une ou plusieurs zones et percevez une part des connexions vendues, avec un relevé borne par borne.",
+          "Les bornes sont installées et entretenues pour vous. Vous percevez une part des connexions vendues, avec un relevé par borne.",
         formulaires: ["Vérifier mon profil investisseur", "Demande de cotation"],
       },
       {
@@ -82,13 +85,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "SkVqJ1SGeL0", duree: "2 min 10" },
         titre: "Financement participatif",
         accroche:
-          "Prêter à des entreprises instruites par le groupe, avec échéancier et garanties écrites.",
+          "Prêter à des entreprises sélectionnées, avec échéancier et garanties écrites.",
         contexte:
-          "Des PME rentables mais jeunes n'obtiennent pas de crédit bancaire faute d'antériorité comptable, alors qu'elles ont des commandes signées à financer.",
+          "Des PME rentables ont des commandes à financer, mais pas encore accès au crédit bancaire.",
         probleme:
-          "Le prêt direct se fait souvent sans analyse ni document : l'argent circule, le risque n'est pas mesuré, le remboursement n'est pas encadré.",
+          "Prêter directement, sans analyse ni contrat, c'est prendre un risque que l'on ne mesure pas.",
         solution:
-          "Umdeny Capital instruit chaque dossier, fixe l'échéancier et les garanties, puis ouvre le financement à plusieurs prêteurs. Vous lisez le dossier complet avant de vous positionner.",
+          "Chaque dossier est étudié, avec échéancier et garanties. Vous lisez le dossier complet avant de décider.",
         formulaires: ["Recevoir un dossier de financement"],
       },
       {
@@ -97,13 +100,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "R6MlUcmOul8", duree: "2 min" },
         titre: "Bourse — actions, obligations, ETF",
         accroche:
-          "Être accompagné pour ouvrir un compte-titres et tenir une méthode dans la durée.",
+          "Être accompagné pour investir en bourse, avec méthode.",
         contexte:
-          "Les marchés cotés sont accessibles depuis un téléphone, mais le vocabulaire, la fiscalité et le choix des supports découragent la plupart des primo-investisseurs.",
+          "La bourse est accessible depuis un téléphone, mais le vocabulaire et les choix découragent.",
         probleme:
-          "Sans méthode, on achète au plus haut et on vend dans la panique. Le risque n'est pas le marché, c'est l'improvisation.",
+          "Sans méthode, on achète trop cher et on vend dans la panique.",
         solution:
-          "Accompagnement à l'ouverture, horizon et répartition définis avec vous, points d'étape réguliers — les décisions restent les vôtres. Risque de perte en capital.",
+          "On vous aide à ouvrir votre compte et à fixer un plan ; les décisions restent les vôtres. Risque de perte en capital.",
         formulaires: [
           "Vérifier mon profil investisseur",
           "Accompagnement à l'ouverture de compte",
@@ -138,13 +141,13 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         video: { id: "mN0zPOpADL4", duree: "1 min 40" },
         titre: "Le rôle d'apporteur d'affaires",
         accroche:
-          "Ce qui est attendu de vous, ce qui vous est versé, et à quel moment.",
+          "Votre rôle, votre commission, et le moment où elle est versée.",
         contexte:
-          "Les décisions d'équipement des entreprises se prennent encore par recommandation : un contact bien placé fait gagner des mois à un fournisseur sérieux.",
+          "Les entreprises choisissent souvent leurs fournisseurs sur recommandation.",
         probleme:
-          "Beaucoup d'apporteurs travaillent sans cadre : commission promise à l'oral, périmètre flou, aucune trace de qui a amené quoi. La relation s'abîme au premier désaccord.",
+          "Sans cadre écrit, une commission promise à l'oral finit souvent en désaccord.",
         solution:
-          "Une convention d'apport signée, une fiche de contact horodatée à chaque introduction, une commission versée sur facture encaissée, et le suivi de vos dossiers.",
+          "Une convention signée, chaque introduction enregistrée, et une commission versée dès que la facture est payée.",
         formulaires: ["Devenir apporteur d'affaires"],
       },
       {
@@ -152,13 +155,14 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
         numero: "02",
         video: { id: "_cMxraX_5RE", duree: "1 min 30" },
         titre: "Internet IP Dédié",
-        accroche: "L'offre que vous portez auprès des entreprises.",
+        accroche:
+          "L'offre Internet professionnelle que vous présentez aux entreprises.",
         contexte:
-          "Banques, cliniques, hôtels, sociétés de services : leur activité s'arrête quand la connexion tombe, et le partagé grand public ne tient pas cette exigence.",
+          "Banques, cliniques, hôtels : sans connexion, leur activité s'arrête.",
         probleme:
-          "Elles paient un débit annoncé qu'elles n'obtiennent qu'aux heures creuses, sans engagement de rétablissement ni interlocuteur technique identifié.",
+          "Elles paient un débit qu'elles n'ont pas toujours, sans garantie de réparation rapide.",
         solution:
-          "Liaison dédiée à débit symétrique garanti, adresse IP fixe, délai d'intervention contractuel et supervision. Vous introduisez, le groupe chiffre et installe.",
+          "Une liaison dédiée, un débit garanti, une IP fixe et un délai d'intervention prévu au contrat. Vous présentez, le groupe chiffre et installe.",
         formulaires: ["Demande de cotation", "Recevoir la plaquette"],
       },
     ],

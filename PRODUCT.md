@@ -19,6 +19,8 @@ Le brief initial mentionnait des « porteurs de projet cherchant un financement 
 
 Présenté aux clients comme le **Parcours de l'écosystème Umdeny** : un tunnel de vente qui transforme une visite en **demande de rappel qualifiée**. Le visiteur repart en ayant compris une opportunité (grâce à une vidéo courte par sujet), en ayant confiance, et avec la promesse d'un appel d'un conseiller sous 48 heures ouvrées.
 
+Le parcours sert à ce que le prospect **comprenne facilement l'écosystème et décide sur quoi investir ou s'engager**. Les **vidéos sont la source principale d'explication** ; les textes servent surtout à diriger le prospect dans le tunnel, à ajouter une précision ou à appuyer un point. Ils doivent rester digestes et simples pour ne pas le surcharger. Le client fournira les textes définitifs ; ceux du site sont une ébauche (précision du 2026-09-22).
+
 Le succès se mesure au nombre de demandes complètes : nom, téléphone, consentement et réponse à la question de qualification de la branche.
 
 ## Positioning
@@ -60,7 +62,7 @@ Umdeny Capital est un groupe d'investissement. **Vireel est la marque qui gère 
 
 1. **La confiance avant la collecte.** Les coordonnées ne sont demandées qu'après que le visiteur a vu et compris un sujet.
 2. **Dire ce qui ne se passe pas ici.** Pas de versement, pas de signature en ligne, un contrat écrit : ces absences sont des arguments et doivent se lire tôt.
-3. **La vidéo est le sujet.** Le texte précise, il ne remplace pas le film.
+3. **La vidéo explique, le texte oriente.** Le film porte l'explication ; le texte guide vers l'étape suivante et appuie un point, en une ou deux phrases courtes. Si un texte s'allonge, c'est qu'il remplace le film.
 4. **Honnêteté des états provisoires.** Ce qui manque (films, liens WhatsApp) se voit comme manquant.
 5. **Mobile moyen de gamme d'abord.** Chaque effet a un coût à justifier et un repli.
 

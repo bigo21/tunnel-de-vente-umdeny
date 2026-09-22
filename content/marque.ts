@@ -34,7 +34,7 @@ export const MARQUE = {
   couverture: {
     titre: "Le capital placé là où l'économie se fabrique.",
     chapeau:
-      "Le parcours de l'écosystème Umdeny : des activités concrètes que le groupe opère ou finance. Chaque sujet tient dans un film court. Vos coordonnées ne sont demandées qu'à la fin.",
+      "Trois temps : un film d'accueil, votre profil, puis le sujet qui vous intéresse. Vos coordonnées ne sont demandées qu'à la fin.",
     /** Titre du choix de branche, lu par les lecteurs d'écran seulement. */
     choisir: "Choisir votre parcours",
     /** Les trois engagements, en une ligne, dans le premier écran. */
@@ -72,7 +72,9 @@ export const MARQUE = {
     /** Légende sous le nombre, dans l'onglet d'index. */
     films: "films",
     changer: "Voir aussi :",
-    regarder: "Regarder et lire",
+    regarder: "Voir le film",
+    /** Consigne sous le titre du sommaire : le film d'abord. */
+    guide: "Un film court par sujet. Choisissez celui qui vous parle.",
     apercu: "Aperçu du film",
   },
 
@@ -85,7 +87,9 @@ export const MARQUE = {
     solution: "Solution",
     engagementTitre: "Ce que vous signerez",
     engagementTexte:
-      "Rien aujourd'hui. Cette demande ne vous engage pas : elle déclenche un appel, puis l'envoi de conditions écrites que vous êtes libre de refuser.",
+      "Rien aujourd'hui. Votre demande déclenche un appel, puis des conditions écrites que vous êtes libre de refuser.",
+    /** Consigne sous le titre d'un sujet : c'est le film qui explique. */
+    guide: "Commencez par le film : il explique l'essentiel. Le texte ci-dessous le résume.",
     action: "Demander un rappel",
     /** Sous le bouton principal : l'objet de la demande. `{objet}` : libellé. */
     objetAction: "Objet : {objet}",
@@ -96,7 +100,7 @@ export const MARQUE = {
 
   demande: {
     titre: "Inscrire votre demande",
-    chapeau: "Quatre réponses suffisent. Un conseiller reprend votre demande sous 48 heures ouvrées.",
+    chapeau: "Quatre réponses, une minute. Un conseiller vous rappelle sous 48 heures ouvrées.",
     objet: "Votre demande",
     nom: "Nom et prénom",
     telephone: "Téléphone",

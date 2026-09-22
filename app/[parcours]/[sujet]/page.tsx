@@ -65,6 +65,9 @@ export default async function PageSujet({
               {sujet.titre}
             </h1>
             <p data-entree className="mt-4 text-chapeau text-encre-douce">{sujet.accroche}</p>
+            <p data-entree className="mt-3 font-titre text-mention text-encre-sourde">
+              {libelles.guide}
+            </p>
           </div>
           {/* Raccourci vers la demande, dès le premier écran sur bureau. */}
           <Link
@@ -133,9 +136,6 @@ export default async function PageSujet({
               </Link>
               <p className="mt-3 font-titre text-mention text-encre-douce">
                 {remplir(libelles.objetAction, { objet: principal })}
-              </p>
-              <p className="mt-1 font-titre text-mention text-encre-sourde">
-                {MARQUE.demande.chapeau}
               </p>
 
               {autres.length > 0 && (
