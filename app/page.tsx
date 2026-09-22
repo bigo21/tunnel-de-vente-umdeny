@@ -26,10 +26,10 @@ export default function Couverture() {
             >
               {couverture.titre}
             </h1>
-            <p className="mt-6 max-w-[48ch] text-chapeau text-encre-douce livret:mt-8">
+            <p data-entree className="mt-6 max-w-[48ch] text-chapeau text-encre-douce livret:mt-8">
               {couverture.chapeau}
             </p>
-            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 font-titre text-mention text-encre livret:mt-10">
+            <ul data-entree className="mt-6 flex flex-wrap gap-x-5 gap-y-2 font-titre text-mention text-encre livret:mt-10">
               {couverture.garanties.map((garantie, i) => (
                 <li key={garantie} className="flex items-center gap-2">
                   <IconeCoche
@@ -51,8 +51,10 @@ export default function Couverture() {
                 parallaxe
               />
             </div>
-            <h2 className="sr-only">{couverture.choisir}</h2>
-            <Onglets titreNiveau="h3" />
+            <div data-entree>
+              <h2 className="sr-only">{couverture.choisir}</h2>
+              <Onglets titreNiveau="h3" />
+            </div>
           </div>
         </section>
 

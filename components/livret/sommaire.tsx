@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, ViewTransition } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  ViewTransition,
+  type ReactNode,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MARQUE } from "@/content/marque";
@@ -14,6 +21,31 @@ import {
 } from "@/lib/tunnel/video";
 import { IconeSuite } from "./icones";
 import type { Vitrine } from "./vitrine-webgl";
+
+const REQUETE_BUREAU = "(min-width: 64rem)";
+function abonnerBureau(rappel: () => void) {
+  const requete = window.matchMedia(REQUETE_BUREAU);
+  requete.addEventListener("change", rappel);
+  return () => requete.removeEventListener("change", rappel);
+}
+
+/** Donne un nom de transition à son contenu seulement quand `actif`. */
+function Nommee({
+  nom,
+  actif,
+  children,
+}: {
+  nom: string;
+  actif: boolean;
+  children: ReactNode;
+}) {
+  if (!actif) return <>{children}</>;
+  return (
+    <ViewTransition name={nom} share="planche" default="none">
+      {children}
+    </ViewTransition>
+  );
+}
 
 /**
  * Le sommaire d'une branche : les films en réglure, une ligne par sujet.
@@ -35,6 +67,13 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
   const cadre = useRef<HTMLDivElement>(null);
   const vitrine = useRef<Vitrine | null>(null);
   const [webgl, setWebgl] = useState(false);
+  // Deux éléments ne peuvent pas porter le même nom de transition : sur
+  // bureau c'est la vitrine, sur téléphone la vignette de ligne.
+  const bureau = useSyncExternalStore(
+    abonnerBureau,
+    () => window.matchMedia(REQUETE_BUREAU).matches,
+    () => null,
+  );
 
   // Montage du moteur WebGL, seulement là où il a du sens.
   useEffect(() => {
@@ -126,10 +165,9 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
                 </span>
                 {/* Vignette de ligne : téléphone et tablette seulement. */}
                 <span className="relative mt-5 block livret:hidden">
-                  <ViewTransition
-                    name={`planche-${parcours.cle}-${sujet.cle}`}
-                    share="planche"
-                    default="none"
+                  <Nommee
+                    nom={`planche-${parcours.cle}-${sujet.cle}`}
+                    actif={bureau === false}
                   >
                     <span className="relative block aspect-video overflow-hidden bg-nuit-releve">
                       <Image
@@ -147,7 +185,7 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
                         </span>
                       )}
                     </span>
-                  </ViewTransition>
+                  </Nommee>
                 </span>
                 <span className="mt-4 flex items-center gap-2 font-titre text-mention text-encre-douce">
                   <span className="tabular-nums">{sujet.video.duree}</span>
@@ -168,13 +206,13 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
       {/* Vitrine : bureau seulement. */}
       <div aria-hidden="true" className="hidden livret:col-span-6 livret:block">
         <div className="sticky top-[calc(var(--hauteur-entete)+2rem)]">
-          <ViewTransition
-            name={`planche-${parcours.cle}-${sujetActif.cle}`}
-            share="planche"
-            default="none"
+          <Nommee
+            nom={`planche-${parcours.cle}-${sujetActif.cle}`}
+            actif={bureau === true}
           >
             <div
               ref={cadre}
+              data-devoiler
               className="relative aspect-video overflow-hidden bg-nuit-releve"
               onPointerMove={(e) => {
                 const r = e.currentTarget.getBoundingClientRect();
@@ -216,7 +254,7 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
                 </span>
               )}
             </div>
-          </ViewTransition>
+          </Nommee>
           <div className="mt-4 flex items-baseline justify-between gap-6 font-titre text-mention">
             <span className="text-encre-douce">{sujetActif.titre}</span>
             <span className="shrink-0 tabular-nums text-encre-sourde">

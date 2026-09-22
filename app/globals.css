@@ -82,9 +82,9 @@
   --ombre-lecture: 0 8px 24px -8px rgb(3 9 41 / 0.8);
 
   /* Cadence : la sortie libère vite la place, l'entrée prend son temps. */
-  --duree-sortie: 180ms;
+  --duree-sortie: 420ms;
   --duree-entree: 420ms;
-  --duree-page: 620ms;
+  --duree-page: 900ms;
 
   /* Marges du livret. La marge gauche porte le fil de reliure. */
   --gouttiere: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
@@ -312,10 +312,29 @@ select.saisie {
   animation: tampon-pose 520ms var(--ease-livre) 380ms both;
 }
 
-/* Contenu révélé au défilement : visible par défaut, masqué seulement une
-   fois que le script a pris la main (classe posée par JS). */
+/* Contenu révélé au défilement ou à l'entrée de page : visible par défaut,
+   masqué seulement quand le script de <head> a posé `js-mouvement`, pour que
+   la première image montre déjà l'état de départ (pas de flash). */
 .js-mouvement [data-inscrire] {
   clip-path: inset(0 100% 0 0);
+}
+.js-mouvement main h1:not([data-tardif]),
+.js-mouvement [data-devoiler],
+.js-mouvement [data-entree] {
+  visibility: hidden;
+  /* Filet de sécurité : si le script tarde (réseau lent, erreur), le contenu
+     réapparaît de lui-même. Une connexion moyenne ne doit jamais voir une
+     page vide. */
+  animation: secours-visible 0s 1.2s forwards;
+}
+@keyframes secours-visible {
+  to {
+    visibility: visible;
+  }
+}
+.ligne-titre {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
 }
 
 /* ---------------------------------------------------------------------------
@@ -331,29 +350,29 @@ select.saisie {
   animation: var(--duree-sortie) var(--ease-tourne) both page-replie;
 }
 ::view-transition-new(.page-avant) {
-  animation: var(--duree-page) var(--ease-livre) calc(var(--duree-sortie) * 0.6)
+  animation: var(--duree-page) var(--ease-livre) calc(var(--duree-sortie) * 0.3)
     both page-monte;
 }
 ::view-transition-old(.page-arriere) {
   animation: var(--duree-sortie) var(--ease-tourne) both page-descend;
 }
 ::view-transition-new(.page-arriere) {
-  animation: var(--duree-page) var(--ease-livre) calc(var(--duree-sortie) * 0.6)
+  animation: var(--duree-page) var(--ease-livre) calc(var(--duree-sortie) * 0.3)
     both page-revient;
 }
 
 @keyframes page-replie {
   to {
-    opacity: 0;
+    opacity: 0.2;
     clip-path: inset(0 0 100% 0);
-    translate: 0 -3vh;
+    translate: 0 -8vh;
+    scale: 0.97;
   }
 }
 @keyframes page-monte {
   from {
-    opacity: 0;
     clip-path: inset(100% 0 0 0);
-    translate: 0 6vh;
+    translate: 0 12vh;
   }
 }
 @keyframes page-descend {
@@ -403,6 +422,11 @@ select.saisie {
   }
   .js-mouvement [data-inscrire] {
     clip-path: none;
+  }
+  .js-mouvement main h1:not([data-tardif]),
+  .js-mouvement [data-devoiler],
+  .js-mouvement [data-entree] {
+    visibility: visible;
   }
   .tampon-pose {
     animation: none;

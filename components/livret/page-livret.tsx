@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useRef, ViewTransition, type ReactNode } from "react";
-import { inscrireEntrees, useScene } from "@/lib/tunnel/gsap";
+import { entreePage, inscrireEntrees, useScene } from "@/lib/tunnel/gsap";
+
+/**
+ * Chemin de la page ouverte en premier. Toute autre page montée ensuite est
+ * une navigation interne. (Un simple drapeau serait trompé par le double
+ * montage des effets en développement.)
+ */
+let cheminInitial: string | null = null;
 
 const PAGE = {
   "page-avant": "page-avant",
@@ -27,7 +34,11 @@ export function PageLivret({
   const racine = useRef<HTMLElement>(null);
 
   useScene(({ mouvement }) => {
-    if (racine.current) inscrireEntrees(racine.current, { mouvement });
+    if (!racine.current) return;
+    cheminInitial ??= window.location.pathname;
+    const navigation = window.location.pathname !== cheminInitial;
+    entreePage(racine.current, { mouvement, navigation });
+    inscrireEntrees(racine.current, { mouvement });
   });
 
   useEffect(() => {

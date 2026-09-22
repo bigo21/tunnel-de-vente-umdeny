@@ -55,6 +55,7 @@ export function Recu({ parcours, sujet }: { parcours: Parcours; sujet: Theme }) 
         <h1
           ref={titre}
           tabIndex={-1}
+          data-tardif
           className="text-titre font-light text-encre outline-none"
         >
           {textes.absent.titre}
@@ -91,6 +92,7 @@ export function Recu({ parcours, sujet }: { parcours: Parcours; sujet: Theme }) 
         <h1
           ref={titre}
           tabIndex={-1}
+          data-tardif
           className="max-w-[14ch] pr-28 text-titre font-light text-papier-encre outline-none"
         >
           {ENVOI_BRANCHE ? textes.titre : textes.titreDemo}

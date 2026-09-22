@@ -82,6 +82,7 @@ export function Planche({
   const contenu = (
     <div
       ref={cadre}
+      data-devoiler
       className={`relative isolate aspect-video overflow-hidden bg-nuit-releve ${className}`}
     >
       {lecture ? (

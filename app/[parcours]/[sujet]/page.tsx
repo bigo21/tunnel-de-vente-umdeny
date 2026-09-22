@@ -64,10 +64,11 @@ export default async function PageSujet({
             >
               {sujet.titre}
             </h1>
-            <p className="mt-4 text-chapeau text-encre-douce">{sujet.accroche}</p>
+            <p data-entree className="mt-4 text-chapeau text-encre-douce">{sujet.accroche}</p>
           </div>
           {/* Raccourci vers la demande, dès le premier écran sur bureau. */}
           <Link
+            data-entree
             href={chemin.demande(parcours.cle, sujet.cle)}
             transitionTypes={["page-avant"]}
             className="hidden min-h-11 items-center gap-2 justify-self-start font-titre text-[0.9375rem] font-medium text-or-clair underline decoration-or/40 underline-offset-4 hover:decoration-or-clair livret:col-span-5 livret:inline-flex"

@@ -52,10 +52,10 @@ export default async function PageDemande({
           >
             {demande.titre}
           </h1>
-          <p className="mt-3 font-titre text-intertitre font-light text-or-clair">
+          <p data-entree className="mt-3 font-titre text-intertitre font-light text-or-clair">
             {sujet.titre}
           </p>
-          <p className="mt-5 max-w-[44ch] text-chapeau text-encre-douce">
+          <p data-entree className="mt-5 max-w-[44ch] text-chapeau text-encre-douce">
             {demande.chapeau}
           </p>
 
@@ -67,7 +67,7 @@ export default async function PageDemande({
           </section>
         </header>
 
-        <div className="mt-10 -mx-(--gouttiere) sm:mx-0 livret:col-span-7 livret:mt-0">
+        <div data-entree className="mt-10 -mx-(--gouttiere) sm:mx-0 livret:col-span-7 livret:mt-0">
           <Suspense
             fallback={<FicheDemande parcours={parcours} sujet={sujet} />}
           >

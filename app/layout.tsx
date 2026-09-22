@@ -43,7 +43,21 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${jost.variable} ${spectral.variable}`}>
+    <html
+      lang="fr"
+      className={`${jost.variable} ${spectral.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Arme les entrées de page avant la première image : sans ce script,
+            le contenu s'afficherait, disparaîtrait puis s'animerait. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-mouvement')",
+          }}
+        />
+      </head>
       <body className="flex min-h-svh flex-col">
         <a
           href="#contenu"
