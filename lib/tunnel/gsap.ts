@@ -76,9 +76,10 @@ export function entreePage(
   const suite = racine.querySelectorAll<HTMLElement>("[data-entree]");
 
   if (!mouvement) {
-    gsap.set([titre, ...planches, ...suite].filter(Boolean), {
-      clearProps: "opacity,visibility,transform,clipPath",
-    });
+    const cibles = [titre, ...planches, ...suite].filter(Boolean);
+    if (cibles.length) {
+      gsap.set(cibles, { clearProps: "opacity,visibility,transform,clipPath" });
+    }
     return;
   }
 
@@ -97,8 +98,9 @@ export function entreePage(
 
   // Après une navigation, la planche arrive déjà par la transition partagée
   // depuis la page précédente : la dévoiler une seconde fois ferait doublon.
-  if (navigation) gsap.set(planches, { visibility: "visible" });
-  else planches.forEach((planche, i) => {
+  if (navigation && planches.length) {
+    gsap.set(planches, { visibility: "visible" });
+  } else planches.forEach((planche, i) => {
     const image = planche.querySelector("img");
     ligne.fromTo(
       planche,
@@ -128,6 +130,7 @@ export function entreePage(
  */
 export function inscrireEntrees(racine: HTMLElement, { mouvement }: Portee) {
   const entrees = racine.querySelectorAll<HTMLElement>("[data-inscrire]");
+  if (!entrees.length) return;
   if (!mouvement) {
     gsap.set(entrees, { clipPath: "inset(0 0% 0 0)" });
     return;

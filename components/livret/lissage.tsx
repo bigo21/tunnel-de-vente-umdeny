@@ -22,8 +22,8 @@ export function defilerVers(cible: HTMLElement | number) {
  * pointeur fin : sur un écran tactile, le défilement natif du système est déjà
  * inertiel, et le doubler coûterait sans rien apporter.
  *
- * Pose aussi la classe `js-mouvement` sur <html>, qui arme les révélations
- * CSS : sans script, tout reste visible.
+ * Signale aussi le démarrage (`js-pret` sur <html>) au script de <head> qui
+ * a armé les révélations CSS (`js-mouvement`) : sans ce signal, il les lève.
  */
 export function Lissage() {
   const pathname = usePathname();
@@ -33,8 +33,31 @@ export function Lissage() {
     const reduit = window.matchMedia("(prefers-reduced-motion: reduce)");
     const fin = window.matchMedia("(pointer: fine)");
 
-    const appliquer = () => {
-      racine.classList.toggle("js-mouvement", !reduit.matches);
+    // L'application a démarré : le script de <head> ne lèvera plus le masquage.
+    racine.classList.add("js-pret");
+
+    // Le navigateur annule une transition de page quand l'écran change de
+    // taille pendant qu'elle joue (clavier mobile, rotation). La navigation,
+    // elle, aboutit : l'annulation est sans conséquence et ne doit pas
+    // remonter comme une erreur.
+    const transitionAnnulee = (evenement: PromiseRejectionEvent) => {
+      const raison = evenement.reason as { name?: string; message?: string } | null;
+      if (
+        raison &&
+        (raison.name === "InvalidStateError" || raison.name === "AbortError") &&
+        /transition/i.test(raison.message ?? "")
+      ) {
+        evenement.preventDefault();
+      }
+    };
+    window.addEventListener("unhandledrejection", transitionAnnulee);
+
+    const appliquer = (changement?: Event) => {
+      // Au démarrage, on respecte ce que le script de <head> a décidé (il a pu
+      // lever le masquage si l'application a tardé) ; ensuite on suit la
+      // préférence du visiteur si elle change en cours de visite.
+      if (changement) racine.classList.toggle("js-mouvement", !reduit.matches);
+      else if (reduit.matches) racine.classList.remove("js-mouvement");
 
       if (!reduit.matches && fin.matches && !lenis) {
         // Chargé à la demande : un téléphone ne télécharge jamais Lenis.
@@ -56,6 +79,7 @@ export function Lissage() {
     reduit.addEventListener("change", appliquer);
     fin.addEventListener("change", appliquer);
     return () => {
+      window.removeEventListener("unhandledrejection", transitionAnnulee);
       reduit.removeEventListener("change", appliquer);
       fin.removeEventListener("change", appliquer);
       gsap.ticker.remove(tick);

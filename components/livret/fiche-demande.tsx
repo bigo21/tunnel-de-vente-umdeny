@@ -38,6 +38,31 @@ export function FicheAvecObjet(props: Omit<Props, "objetInitial">) {
   return <FicheDemande {...props} objetInitial={objet} restaurer />;
 }
 
+/**
+ * Attend que la zone visible cesse de changer de taille (fermeture du clavier
+ * virtuel), sans jamais attendre plus de 700 ms.
+ */
+function ecranStable(): Promise<void> {
+  const vue = window.visualViewport;
+  if (!vue) return Promise.resolve();
+  return new Promise((fini) => {
+    let calme: number;
+    const limite = window.setTimeout(terminer, 700);
+    function terminer() {
+      window.clearTimeout(calme);
+      window.clearTimeout(limite);
+      vue!.removeEventListener("resize", relancer);
+      fini();
+    }
+    function relancer() {
+      window.clearTimeout(calme);
+      calme = window.setTimeout(terminer, 160);
+    }
+    vue.addEventListener("resize", relancer);
+    relancer();
+  });
+}
+
 const ORDRE: ChampVerifie[] = [
   "nom",
   "telephone",
@@ -122,6 +147,11 @@ export function FicheDemande({
         sujet: sujet.cle,
       });
       memoire.effacerBrouillon();
+      // Sur téléphone, le clavier est encore ouvert : il se referme, la
+      // hauteur de l'écran change, et le navigateur annulerait la transition
+      // vers le reçu. On le ferme d'abord et on attend que l'écran se pose.
+      (document.activeElement as HTMLElement | null)?.blur();
+      await ecranStable();
       router.replace(chemin.recu(parcours.cle, sujet.cle), {
         transitionTypes: ["page-avant"],
       });

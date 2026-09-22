@@ -82,7 +82,7 @@ export function Recu({ parcours, sujet }: { parcours: Parcours; sujet: Theme }) 
 
   return (
     <div className="grid gap-x-[clamp(2rem,5vw,6rem)] gap-y-14 livret:grid-cols-12">
-      <section className="page-claire relative -mx-(--gouttiere) bg-papier px-5 pt-9 pb-9 text-papier-encre shadow-(--ombre-feuille) sm:mx-0 sm:px-9 livret:col-span-7 livret:px-12 livret:pt-12">
+      <section className="page-claire relative overflow-clip -mx-(--gouttiere) bg-papier px-5 pt-9 pb-9 text-papier-encre shadow-(--ombre-feuille) sm:mx-0 sm:px-9 livret:col-span-7 livret:px-12 livret:pt-12">
         <span
           aria-hidden="true"
           className="tampon tampon-pose absolute top-6 right-5 border-or-encre !bg-transparent !text-or-encre sm:right-9 livret:top-10 livret:right-12"

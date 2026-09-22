@@ -37,8 +37,11 @@ export function PageLivret({
     if (!racine.current) return;
     cheminInitial ??= window.location.pathname;
     const navigation = window.location.pathname !== cheminInitial;
-    entreePage(racine.current, { mouvement, navigation });
-    inscrireEntrees(racine.current, { mouvement });
+    // Si le masquage a été levé (application trop lente à démarrer), le
+    // contenu est déjà là : on ne rejoue pas son apparition par-dessus.
+    const arme = document.documentElement.classList.contains("js-mouvement");
+    entreePage(racine.current, { mouvement: mouvement && arme, navigation });
+    inscrireEntrees(racine.current, { mouvement: mouvement && arme });
   });
 
   useEffect(() => {

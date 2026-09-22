@@ -101,6 +101,15 @@
   scrollbar-color: var(--color-reglure-forte) var(--color-nuit);
 }
 
+html,
+body {
+  /* Rien ne doit déborder en largeur : sur téléphone, un débordement même
+     passager (un tampon qui se pose en zoomant) élargit la zone d'affichage,
+     et le navigateur annule la transition de page en cours. `clip` ne crée
+     pas de conteneur de défilement : les éléments collants restent collants. */
+  overflow-x: clip;
+}
+
 html {
   /* Laisse la place à l'en-tête et à la barre d'action quand le clavier
      amène un champ sous l'une d'elles. */
@@ -322,15 +331,6 @@ select.saisie {
 .js-mouvement [data-devoiler],
 .js-mouvement [data-entree] {
   visibility: hidden;
-  /* Filet de sécurité : si le script tarde (réseau lent, erreur), le contenu
-     réapparaît de lui-même. Une connexion moyenne ne doit jamais voir une
-     page vide. */
-  animation: secours-visible 0s 1.2s forwards;
-}
-@keyframes secours-visible {
-  to {
-    visibility: visible;
-  }
 }
 .ligne-titre {
   padding-bottom: 0.08em;

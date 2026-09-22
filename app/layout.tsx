@@ -50,11 +50,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/* Arme les entrées de page avant la première image : sans ce script,
-            le contenu s'afficherait, disparaîtrait puis s'animerait. */}
+            le contenu s'afficherait, disparaîtrait puis s'animerait. Si
+            l'application n'a pas démarré après 2,5 s (réseau lent, script
+            bloqué), il lève le masquage : rien ne reste jamais invisible. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-mouvement')",
+              "(function(){var r=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('js-mouvement');setTimeout(function(){if(!r.classList.contains('js-pret'))r.classList.remove('js-mouvement')},2500)})()",
           }}
         />
       </head>
