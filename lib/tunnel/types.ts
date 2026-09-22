@@ -32,11 +32,6 @@ export type Parcours = {
   /** Surtitre affiché en haut de chaque écran du parcours. */
   libelle: string;
   titreMenu: string;
-  /**
-   * Repère visuel du parcours, exigé par le brief pour que le visiteur sache
-   * toujours dans quelle branche il se trouve.
-   */
-  teinte: "accent" | "encre";
   /** Ce que la branche annonce sur l'écran d'accueil. */
   carteAccueil: {
     titre: string;
@@ -49,7 +44,7 @@ export type Parcours = {
   themes: [Theme, ...Theme[]];
 };
 
-/** Les six champs du formulaire, plus le consentement. */
+/** Les champs de la demande : quatre obligatoires, trois facultatifs. */
 export type Demande = {
   nom: string;
   telephone: string;

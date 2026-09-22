@@ -1,55 +1,42 @@
 "use client";
 
-import { useEffect, type RefObject } from "react";
+import { useEffect, type DependencyList } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /**
- * Socle GSAP du tunnel.
+ * Socle GSAP du livret : tout ce qui dépend du défilement (fil de reliure,
+ * inscription des entrées, section épinglée, parallaxe des planches).
  *
- * GSAP prend en charge tout ce qui dépend du défilement — parallaxe, apparition
- * des sections, compteurs. Motion s'occupe du reste, au niveau des composants.
- *
- * Tout passe par `gsap.matchMedia`, qui coupe les animations quand le visiteur
- * a demandé à réduire les mouvements et les rétablit s'il change d'avis en
- * cours de route.
+ * Chaque scène passe par `gsap.matchMedia` : le visiteur qui demande moins de
+ * mouvement reçoit l'état final, sans animation, et le basculement en cours de
+ * visite est pris en compte.
  */
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
-
-  // Les polices chargées après coup décalent tout : sans ce recalcul, les
-  // déclencheurs resteraient positionnés sur la mise en page de substitution.
+  // Les polices chargées après coup décalent les déclencheurs.
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
-
-  // Sur mobile, l'apparition et la disparition de la barre d'adresse changent
-  // la hauteur visible ; on ignore ce cas pour ne pas recalculer en plein
-  // défilement, mais une vraie rotation doit bien être prise en compte.
+  // La barre d'adresse mobile change la hauteur visible : on l'ignore pour ne
+  // pas recalculer en plein défilement ; une rotation reste prise en compte.
   ScrollTrigger.config({ ignoreMobileResize: true });
 }
 
 export { gsap, ScrollTrigger };
 
-type Portee = { mouvementAutorise: boolean };
+export type Portee = { mouvement: boolean };
 
 /**
- * Exécute une mise en scène GSAP au montage et la défait au démontage.
- *
- * La scène est rejouée quand `dependances` change, et uniquement là : le corps
- * de `monter` ne doit donc lire que des références et des valeurs listées dans
- * ces dépendances.
- *
- * `monter` est appelé deux fois : une fois pour les visiteurs qui acceptent le
- * mouvement, une fois pour ceux qui le refusent. À chacun de décider quoi
- * faire dans les deux cas — le plus souvent, poser l'état final sans animer.
+ * Monte une scène GSAP et la défait au démontage. `monter` est appelé avec
+ * `mouvement: false` quand le visiteur a demandé à réduire les animations :
+ * à lui de poser alors l'état final.
  */
 export function useScene(
-  monter: (contexte: gsap.Context, portee: Portee) => void | (() => void),
-  dependances: unknown[] = [],
+  monter: (portee: Portee) => void | (() => void),
+  dependances: DependencyList = [],
 ) {
   useEffect(() => {
     const media = gsap.matchMedia();
-
     media.add(
       {
         anime: "(prefers-reduced-motion: no-preference)",
@@ -57,52 +44,34 @@ export function useScene(
       },
       (contexte) => {
         const { anime } = contexte.conditions as { anime: boolean };
-        // GSAP défait lui-même ce que la scène a créé ; la valeur rendue sert
-        // aux nettoyages que le contexte ne connaît pas (SplitText, écoutes).
-        return monter(contexte, { mouvementAutorise: anime });
+        return monter({ mouvement: anime });
       },
     );
-
     return () => media.revert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependances);
 }
 
 /**
- * Révèle un groupe d'éléments à l'approche du défilement, les uns après les
- * autres. `selecteur` est résolu dans le conteneur passé en référence.
+ * Inscrit les entrées marquées `data-inscrire` le long de leur réglure : le
+ * filet se trace, puis le texte apparaît de gauche à droite, comme écrit à la
+ * main sur la ligne. Le contenu reste lisible sans script (voir globals.css).
  */
-export function revelerAuDefilement(
-  contexte: gsap.Context,
-  conteneur: RefObject<HTMLElement | null>,
-  selecteur: string,
-  { mouvementAutorise }: Portee,
-) {
-  const element = conteneur.current;
-  if (!element) return;
-
-  const cibles = element.querySelectorAll(selecteur);
-  if (cibles.length === 0) return;
-
-  if (!mouvementAutorise) {
-    gsap.set(cibles, { opacity: 1, y: 0 });
+export function inscrireEntrees(racine: HTMLElement, { mouvement }: Portee) {
+  const entrees = racine.querySelectorAll<HTMLElement>("[data-inscrire]");
+  if (!mouvement) {
+    gsap.set(entrees, { clipPath: "inset(0 0% 0 0)" });
     return;
   }
-
-  contexte.add(() => {
+  entrees.forEach((entree) => {
     gsap.fromTo(
-      cibles,
-      { opacity: 0, y: 34 },
+      entree,
+      { clipPath: "inset(0 100% 0 0)" },
       {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
+        clipPath: "inset(0 0% 0 0)",
+        duration: 1.1,
         ease: "power3.out",
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: element,
-          start: "top 78%",
-        },
+        scrollTrigger: { trigger: entree, start: "top 88%", once: true },
       },
     );
   });

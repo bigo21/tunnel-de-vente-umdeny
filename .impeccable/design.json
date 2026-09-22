@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T00:00:00Z",
+  "title": "Design System: Tunnel Umdeny Capital",
+  "extensions": {
+    "colorMeta": {
+      "nuit": {
+        "role": "neutral",
+        "displayName": "Nuit de charte",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "Fond du livret. Token de marque (charte Umdeny #030929)."
+      },
+      "nuit-releve": {
+        "role": "neutral",
+        "displayName": "Nuit relevée",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ]
+      },
+      "reglure": {
+        "role": "neutral",
+        "displayName": "Réglure",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "Filets décoratifs."
+      },
+      "reglure-forte": {
+        "role": "neutral",
+        "displayName": "Réglure forte",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "Filets de contrôle, ≥ 3:1 sur la nuit."
+      },
+      "encre": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "17.9:1 sur nuit."
+      },
+      "encre-douce": {
+        "role": "neutral",
+        "displayName": "Encre douce",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "10.4:1 sur nuit."
+      },
+      "encre-sourde": {
+        "role": "neutral",
+        "displayName": "Encre sourde",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "6.3:1 sur nuit."
+      },
+      "papier": {
+        "role": "neutral",
+        "displayName": "Papier",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ],
+        "note": "Page claire : fiche et reçu seulement."
+      },
+      "papier-releve": {
+        "role": "neutral",
+        "displayName": "Papier relevé",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ]
+      },
+      "papier-encre": {
+        "role": "neutral",
+        "displayName": "Encre sur papier",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ],
+        "note": "17.3:1 sur papier."
+      },
+      "papier-encre-douce": {
+        "role": "neutral",
+        "displayName": "Encre douce sur papier",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ],
+        "note": "7.9:1 sur papier."
+      },
+      "papier-encre-sourde": {
+        "role": "neutral",
+        "displayName": "Encre sourde sur papier",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ],
+        "note": "4.8:1 sur papier."
+      },
+      "papier-reglure": {
+        "role": "neutral",
+        "displayName": "Réglure sur papier",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ]
+      },
+      "papier-filet": {
+        "role": "neutral",
+        "displayName": "Filet sur papier",
+        "tonalRamp": [
+          "#030929",
+          "#3d4775",
+          "#5e6890",
+          "#6b7599",
+          "#c9d0e2",
+          "#e3e8f2",
+          "#eef1f7",
+          "#f7f9fc"
+        ],
+        "note": "Bord des contrôles."
+      },
+      "or": {
+        "role": "primary",
+        "displayName": "Or de charte",
+        "tonalRamp": [
+          "#4a2c14",
+          "#6e4420",
+          "#8a5a2b",
+          "#9e6632",
+          "#c08f51",
+          "#dfb56d",
+          "#ecd1a0",
+          "#f7ecd8"
+        ],
+        "note": "Signal. Charte Umdeny #C08F51."
+      },
+      "or-clair": {
+        "role": "primary",
+        "displayName": "Or clair",
+        "tonalRamp": [
+          "#4a2c14",
+          "#6e4420",
+          "#8a5a2b",
+          "#9e6632",
+          "#c08f51",
+          "#dfb56d",
+          "#ecd1a0",
+          "#f7ecd8"
+        ],
+        "note": "Or lisible sur la nuit ; départ du dégradé."
+      },
+      "or-fonce": {
+        "role": "primary",
+        "displayName": "Or foncé",
+        "tonalRamp": [
+          "#4a2c14",
+          "#6e4420",
+          "#8a5a2b",
+          "#9e6632",
+          "#c08f51",
+          "#dfb56d",
+          "#ecd1a0",
+          "#f7ecd8"
+        ],
+        "note": "Arrivée du dégradé, jamais seul."
+      },
+      "or-encre": {
+        "role": "primary",
+        "displayName": "Or d'encre",
+        "tonalRamp": [
+          "#4a2c14",
+          "#6e4420",
+          "#8a5a2b",
+          "#9e6632",
+          "#c08f51",
+          "#dfb56d",
+          "#ecd1a0",
+          "#f7ecd8"
+        ],
+        "note": "Or lisible sur papier, 5.2:1."
+      },
+      "sur-or": {
+        "role": "primary",
+        "displayName": "Sur or",
+        "tonalRamp": [
+          "#030929",
+          "#081038",
+          "#0e1847",
+          "#1c275a",
+          "#5a6597",
+          "#8891ba",
+          "#b4bcda",
+          "#f3f5fb"
+        ],
+        "note": "Texte sur or."
+      },
+      "alerte-papier": {
+        "role": "error",
+        "displayName": "Alerte sur papier",
+        "tonalRamp": [
+          "#4a150c",
+          "#7a2414",
+          "#a3301c",
+          "#c9503a",
+          "#e8866f",
+          "#f0a795",
+          "#f6c9bd",
+          "#fbe8e2"
+        ],
+        "note": "6.2:1 sur papier."
+      }
+    },
+    "typographyMeta": {
+      "affiche": {
+        "displayName": "Affiche",
+        "purpose": "Le seul titre de la couverture, 13ch au plus."
+      },
+      "titre": {
+        "displayName": "Titre",
+        "purpose": "Le h1 de chaque page et la phrase d'engagement épinglée."
+      },
+      "intertitre": {
+        "displayName": "Intertitre",
+        "purpose": "Titres d'entrée (sujets, onglets), titres de section."
+      },
+      "chapeau": {
+        "displayName": "Chapeau",
+        "purpose": "Paragraphe sous chaque h1, 44 à 48ch."
+      },
+      "lecture": {
+        "displayName": "Lecture",
+        "purpose": "Texte courant en Spectral ; entrées de sujet à 1.125rem sur bureau, 60ch."
+      },
+      "mention": {
+        "displayName": "Mention",
+        "purpose": "Libellés, durées, étape, liens d'action, légendes ; chiffres tabulaires."
+      },
+      "tampon": {
+        "displayName": "Tampon",
+        "purpose": "Capitales espacées, uniquement dans un tampon."
+      }
+    },
+    "gradients": [
+      {
+        "name": "degrade-or",
+        "value": "linear-gradient(140deg, #dfb56d, #9e6632)",
+        "purpose": "Fond du bouton or, seule surface pleine en or."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "feuille-posee",
+        "value": "0 40px 90px -50px rgb(0 0 0 / 0.95)",
+        "purpose": "Page claire (fiche, reçu)."
+      },
+      {
+        "name": "planche-collee",
+        "value": "0 30px 80px -40px rgb(0 0 0 / 0.9)",
+        "purpose": "Planche épinglée d'un sujet, bureau."
+      },
+      {
+        "name": "lueur-or",
+        "value": "0 10px 30px -12px rgb(192 143 81 / 0.55)",
+        "purpose": "Bouton or au repos."
+      },
+      {
+        "name": "lueur-or-survol",
+        "value": "0 16px 38px -14px rgb(223 181 109 / 0.7)",
+        "purpose": "Bouton or au survol."
+      },
+      {
+        "name": "disque-lecture",
+        "value": "0 8px 24px -8px rgb(3 9 41 / 0.8)",
+        "purpose": "Disque de lecture sur une planche."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-livre",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Toute entrée, survol, révélation."
+      },
+      {
+        "name": "ease-tourne",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Page sortante lors d'une page tournée."
+      },
+      {
+        "name": "duree-sortie",
+        "value": "180ms",
+        "purpose": "Sortie de page, états de contrôle, appui."
+      },
+      {
+        "name": "duree-entree",
+        "value": "420ms",
+        "purpose": "Lueur du bouton, entrées d'état."
+      },
+      {
+        "name": "duree-page",
+        "value": "620ms",
+        "purpose": "Page entrante et planche partagée ; démarre à 60 % de la sortie."
+      },
+      {
+        "name": "inscription",
+        "value": "clip-path inset(0 100% 0 0) → inset(0 0 0 0), 1.1s power3.out, déclenchée à 88 % du viewport",
+        "purpose": "Entrées data-inscrire le long de la réglure."
+      },
+      {
+        "name": "tampon-pose",
+        "value": "520ms ease-livre, délai 380ms : rotate(-14deg) scale(1.7) → rotate(-4deg) scale(1)",
+        "purpose": "Tampon du reçu."
+      },
+      {
+        "name": "sourdine",
+        "value": "filter 700ms ease-livre",
+        "purpose": "Retour de couleur d'une vignette provisoire au survol."
+      },
+      {
+        "name": "reduit",
+        "value": "prefers-reduced-motion: reduce → durées 0, état final posé, pas d'épinglage, pas de WebGL, pas de Lenis",
+        "purpose": "Repli obligatoire de chaque effet."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem",
+        "purpose": "Page claire hors fond perdu ; nom d'étape visible dans l'en-tête."
+      },
+      {
+        "name": "livret",
+        "value": "64rem",
+        "purpose": "Bureau : grille 12 colonnes, marge de reliure, fil vertical, vitrine WebGL."
+      }
+    ],
+    "layers": [
+      {
+        "name": "z-planche",
+        "value": "1"
+      },
+      {
+        "name": "z-barre",
+        "value": "30"
+      },
+      {
+        "name": "z-entete",
+        "value": "40"
+      },
+      {
+        "name": "z-fil",
+        "value": "45"
+      },
+      {
+        "name": "z-evitement",
+        "value": "60"
+      }
+    ],
+    "brandSwap": {
+      "tokens": "app/globals.css : bloc @theme (couleurs, polices, échelle, courbes, point de rupture livret) et :root (--degrade-or, durées, marges, couches)",
+      "fonts": "app/layout.tsx : chargement next/font de Jost et Spectral vers --police-titre / --police-texte",
+      "content": [
+        "content/marque.ts : nom, filiale, logo, symbole, couleurNavigateur, meta, couverture, conditions, sommaire, sujet, demande, recu, interface, lecteur, introuvable, piedDePage",
+        "content/parcours.ts : PARCOURS (branches, sujets, vidéos, qualification)",
+        "content/whatsapp.ts : WHATSAPP (liens et libellés, après envoi seulement)"
+      ],
+      "assets": "public/marque/lockup-blanc.png, public/marque/symbole.png",
+      "brandNeutral": "components/livret/*, lib/tunnel/* (livret.ts, gsap.ts, envoi.ts, video.ts, types.ts)"
+    }
+  },
+  "components": [
+    {
+      "name": "Bouton or",
+      "kind": "button",
+      "refersTo": "bouton-or",
+      "description": "L'action qui fait avancer le tunnel ; un seul par écran.",
+      "html": "<a class=\"ds-bouton-or\" href=\"#\">Faire ma demande <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-bouton-or{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;min-width:320px;padding:0 24px;background:linear-gradient(140deg,var(--color-or-clair,#dfb56d),var(--color-or-fonce,#9e6632));color:var(--color-sur-or,#030929);font-family:var(--font-titre,Jost,sans-serif);font-weight:500;font-size:1rem;text-decoration:none;border-radius:0;box-shadow:0 10px 30px -12px rgb(192 143 81/.55);transition:box-shadow 420ms cubic-bezier(.22,1,.36,1),transform 180ms cubic-bezier(.22,1,.36,1)}.ds-bouton-or:hover{box-shadow:0 16px 38px -14px rgb(223 181 109/.7)}.ds-bouton-or:active{transform:translateY(1px)}.ds-bouton-or:focus-visible{outline:2px solid var(--color-or,#c08f51);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Lien d'action",
+      "kind": "button",
+      "refersTo": "lien-or",
+      "description": "Action secondaire sur la nuit : texte or souligné.",
+      "html": "<a class=\"ds-lien-or\" href=\"#\">Changer pour le parcours apporteur</a>",
+      "css": ".ds-lien-or{display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-titre,Jost,sans-serif);font-size:.9375rem;color:var(--color-or-clair,#dfb56d);text-decoration:underline;text-decoration-color:rgb(192 143 81/.4);text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-color 180ms}.ds-lien-or:hover{text-decoration-color:var(--color-or-clair,#dfb56d)}.ds-lien-or:focus-visible{outline:2px solid var(--color-or,#c08f51);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Champ de saisie",
+      "kind": "input",
+      "refersTo": "saisie",
+      "description": "Champ de la fiche sur la page claire : fond relevé, filet inférieur seul.",
+      "html": "<div class=\"ds-page\"><label class=\"ds-legende\" for=\"ds-nom\">Nom et prénom</label><input id=\"ds-nom\" class=\"ds-saisie\"><p class=\"ds-aide\">Avec l'indicatif du pays.</p></div>",
+      "css": ".ds-page{background:var(--color-papier,#eef1f7);padding:24px}.ds-legende{display:block;font-family:var(--font-titre,Jost,sans-serif);font-weight:500;font-size:.9375rem;color:var(--color-papier-encre,#030929)}.ds-saisie{display:block;width:100%;height:48px;margin-top:6px;padding:0 12px;border:0;border-bottom:1px solid var(--color-papier-filet,#6b7599);border-radius:0;background:var(--color-papier-releve,#e3e8f2);font-family:var(--font-titre,Jost,sans-serif);font-size:1.0625rem;color:var(--color-papier-encre,#030929);caret-color:var(--color-or-encre,#8a5a2b);outline:none;transition:border-color 180ms}.ds-saisie:hover{border-color:var(--color-papier-encre-douce,#3d4775)}.ds-saisie:focus-visible{border-bottom-width:2px;border-color:var(--color-or-encre,#8a5a2b)}.ds-aide{margin-top:6px;font-size:.875rem;color:var(--color-papier-encre-sourde,#5e6890)}"
+    },
+    {
+      "name": "Options en réglure",
+      "kind": "input",
+      "refersTo": "pastille",
+      "description": "Réponse unique : lignes de réglure avec pastille, sur la page claire.",
+      "html": "<div class=\"ds-page\"><label class=\"ds-option\"><input type=\"radio\" name=\"ds-q\" class=\"ds-pastille\" checked> Vérifier mon profil investisseur</label><label class=\"ds-option\"><input type=\"radio\" name=\"ds-q\" class=\"ds-pastille\"> Recevoir le document détaillé</label></div>",
+      "css": ".ds-page{background:var(--color-papier,#eef1f7);padding:24px}.ds-option{display:flex;align-items:center;gap:14px;min-height:48px;padding:10px 0;border-bottom:1px solid var(--color-papier-reglure,#c9d0e2);font-family:var(--font-texte,Spectral,serif);font-size:.9375rem;color:var(--color-papier-encre,#030929);cursor:pointer;transition:background-color 180ms}.ds-option:hover{background:var(--color-papier-releve,#e3e8f2)}.ds-pastille{appearance:none;flex-shrink:0;width:22px;height:22px;margin:0;border:1.5px solid var(--color-papier-filet,#6b7599);border-radius:999px;background:var(--color-papier,#eef1f7);cursor:pointer}.ds-pastille:checked{border-color:var(--color-or-encre,#8a5a2b);background:radial-gradient(circle,var(--color-or-encre,#8a5a2b) 0 42%,var(--color-papier,#eef1f7) 46%)}.ds-pastille:focus-visible{outline:2px solid var(--color-or-encre,#8a5a2b);outline-offset:3px}"
+    },
+    {
+      "name": "Onglet d'index",
+      "kind": "nav",
+      "refersTo": "onglet",
+      "description": "Une branche du tunnel par ligne ; le compteur de films fait office d'onglet.",
+      "html": "<ul class=\"ds-onglets\"><li><a class=\"ds-onglet\" href=\"#\"><span><span class=\"ds-onglet-titre\">Je suis investisseur</span><span class=\"ds-onglet-action\">Voir les cinq films →</span></span><span class=\"ds-compteur\"><span class=\"ds-n\">5</span><span class=\"ds-films\">films</span></span></a></li></ul>",
+      "css": ".ds-onglets{list-style:none;margin:0;padding:0;background:var(--color-nuit,#030929);border-bottom:1px solid var(--color-reglure,#1c275a)}.ds-onglet{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;padding:24px 4px 24px 0;border-top:1px solid var(--color-reglure,#1c275a);text-decoration:none}.ds-onglet-titre{display:block;font-family:var(--font-titre,Jost,sans-serif);font-size:1.6rem;font-weight:400;color:var(--color-encre,#f3f5fb);transition:color 180ms}.ds-onglet-action{display:block;margin-top:12px;font-family:var(--font-titre,Jost,sans-serif);font-size:.875rem;font-weight:500;color:var(--color-or-clair,#dfb56d)}.ds-compteur{display:flex;flex-direction:column;align-items:center;justify-content:center;width:80px;min-height:80px;border-left:1px solid var(--color-reglure,#1c275a);background:var(--color-nuit-releve,#081038);font-family:var(--font-titre,Jost,sans-serif);color:var(--color-encre-douce,#b4bcda);transition:color 300ms,border-color 300ms}.ds-n{font-size:1.625rem;font-weight:300;line-height:1}.ds-films{margin-top:4px;font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase}.ds-onglet:hover .ds-onglet-titre,.ds-onglet:hover .ds-compteur{color:var(--color-or-clair,#dfb56d)}.ds-onglet:hover .ds-compteur{border-color:var(--color-or,#c08f51)}.ds-onglet:focus-visible{outline:2px solid var(--color-or,#c08f51);outline-offset:3px}"
+    },
+    {
+      "name": "Conditions en réglure",
+      "kind": "custom",
+      "description": "Règles du groupe : libellé à gauche, valeur à droite, un filet par ligne ; seule la première valeur en or.",
+      "html": "<dl class=\"ds-conditions\"><div><dt>Versement demandé sur ce site</dt><dd class=\"ds-signal\">Aucun</dd></div><div><dt>Engagement</dt><dd>Par contrat écrit, après un entretien</dd></div><div><dt>Rappel d'un conseiller</dt><dd>Sous 48 h ouvrées</dd></div></dl>",
+      "css": ".ds-conditions{margin:0;padding:0 16px;background:var(--color-nuit,#030929);font-family:var(--font-titre,Jost,sans-serif)}.ds-conditions div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:4px 24px;padding:14px 0;border-top:1px solid var(--color-reglure,#1c275a)}.ds-conditions div:last-child{border-bottom:1px solid var(--color-reglure,#1c275a)}.ds-conditions dt{font-size:.875rem;color:var(--color-encre-douce,#b4bcda)}.ds-conditions dd{margin:0;text-align:right;font-size:.9375rem;font-weight:500;color:var(--color-encre,#f3f5fb)}.ds-conditions dd.ds-signal{color:var(--color-or-clair,#dfb56d)}"
+    },
+    {
+      "name": "Tampon",
+      "kind": "custom",
+      "refersTo": "tampon",
+      "description": "Encre d'or à l'état de tampon : « film provisoire » sur une planche, « enregistrée » sur le reçu.",
+      "html": "<div class=\"ds-fond\"><span class=\"ds-tampon\">Film provisoire</span></div>",
+      "css": ".ds-fond{background:var(--color-nuit,#030929);padding:32px}.ds-tampon{display:inline-block;font-family:var(--font-titre,Jost,sans-serif);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:.6875rem;line-height:1.2;color:var(--color-or-clair,#dfb56d);border:1px solid currentColor;outline:1px solid currentColor;outline-offset:2px;padding:.35rem .6rem;transform:rotate(-4deg);background:rgb(3 9 41/.72)}"
+    },
+    {
+      "name": "Fil de reliure",
+      "kind": "nav",
+      "description": "Progression du tunnel : quatre segments, franchis en or, en cours en or voilé qui se remplit, à venir en réglure.",
+      "html": "<div class=\"ds-fil\" role=\"img\" aria-label=\"Étape 2 sur 4\"><span class=\"ds-seg ds-passe\"></span><span class=\"ds-seg ds-courant\"><i></i></span><span class=\"ds-seg\"></span><span class=\"ds-seg\"></span></div>",
+      "css": ".ds-fil{display:flex;gap:3px;height:2px;padding:24px;background:var(--color-nuit,#030929);box-sizing:content-box}.ds-seg{position:relative;flex:1;overflow:hidden;background:var(--color-reglure,#1c275a)}.ds-passe{background:var(--color-or,#c08f51)}.ds-courant{background:rgb(192 143 81/.45)}.ds-courant i{position:absolute;inset:0;background:var(--color-or,#c08f51);transform-origin:left;transform:scaleX(.4)}"
+    },
+    {
+      "name": "Planche (film)",
+      "kind": "card",
+      "refersTo": "lecture-film",
+      "description": "Vignette 16/9 collée sans cadre, en sourdine tant que provisoire, disque de lecture or, tampon.",
+      "html": "<figure class=\"ds-planche\"><button class=\"ds-planche-cadre\" type=\"button\"><span class=\"ds-image\"></span><span class=\"ds-voile\"></span><span class=\"ds-lire\"><span class=\"ds-disque\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\"><path d=\"M8.5 5.8v12.4a.6.6 0 0 0 .9.5l9.7-6.2a.6.6 0 0 0 0-1L9.4 5.3a.6.6 0 0 0-.9.5Z\" fill=\"currentColor\"/></svg></span><span class=\"ds-duree\">Regarder<br><small>1 min 30</small></span></span><span class=\"ds-tampon-p\">Film provisoire</span></button><figcaption>Vidéo de test, à remplacer.</figcaption></figure>",
+      "css": ".ds-planche{margin:0;padding:16px;background:var(--color-nuit,#030929)}.ds-planche-cadre{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border:0;padding:0;cursor:pointer;background:var(--color-nuit-releve,#081038)}.ds-image{position:absolute;inset:0;background:linear-gradient(135deg,#4d7a5a,#b58a4a 60%,#2f4a6b);filter:grayscale(.78) sepia(.14) brightness(.8) contrast(1.06);transition:filter 700ms cubic-bezier(.22,1,.36,1),scale 700ms cubic-bezier(.22,1,.36,1)}.ds-planche-cadre:hover .ds-image,.ds-planche-cadre:focus-visible .ds-image{filter:grayscale(.2) brightness(.95);scale:1.025}.ds-voile{position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to top,rgb(3 9 41/.95),rgb(3 9 41/.6),transparent)}.ds-lire{position:absolute;left:0;bottom:0;display:flex;align-items:center;gap:12px;padding:20px;text-align:left}.ds-disque{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:999px;background:var(--color-or,#c08f51);color:var(--color-sur-or,#030929);box-shadow:0 8px 24px -8px rgb(3 9 41/.8);transition:transform 300ms}.ds-planche-cadre:hover .ds-disque{transform:scale(1.05)}.ds-duree{font-family:var(--font-titre,Jost,sans-serif);font-size:.875rem;color:var(--color-encre,#f3f5fb)}.ds-duree small{color:var(--color-encre-douce,#b4bcda);font-size:inherit}.ds-tampon-p{position:absolute;top:16px;right:16px;font-family:var(--font-titre,Jost,sans-serif);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:.6875rem;color:var(--color-or-clair,#dfb56d);border:1px solid currentColor;outline:1px solid currentColor;outline-offset:2px;padding:.35rem .6rem;transform:rotate(-4deg);background:rgb(3 9 41/.72)}.ds-planche-cadre:focus-visible{outline:2px solid var(--color-or,#c08f51);outline-offset:3px}.ds-planche figcaption{margin-top:8px;font-family:var(--font-titre,Jost,sans-serif);font-size:.875rem;color:var(--color-encre-sourde,#8891ba)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le livret",
+    "overview": "Le tunnel est un livret relié, pas une landing. On l'ouvre sur une couverture bleu nuit, on lit une page par étape, on y inscrit sa ligne sur une page claire, et elle revient contresignée d'un tampon. Toute la hiérarchie tient à l'encre et à la réglure : des filets d'un pixel séparent les entrées, rien n'est encadré, et l'or ne sert qu'à signaler. La densité est celle d'un document qu'on lit, pas d'une vitrine qu'on parcourt : grandes marges, titres Jost en graisse légère, texte courant en Spectral.\n\nLe livret reprend la grammaire du carnet (reliure, réglure, onglets d'index, planches collées, tampons, pages qui se tournent) sans son déguisement : aucune texture de papier, aucune écriture manuscrite, aucun effet de matière. La page claire n'est pas un fond alterné : elle est réservée à ce qui s'écrit, la fiche de demande et le reçu. Le mouvement suit le même geste (on inscrit, on tourne, on tamponne) et se replie entièrement quand le visiteur demande moins de mouvement.\n\nLe système refuse la landing fintech empilée (héros, chiffres clés, cartes, formulaire en bas de page) et la broadsheet à filets et petites capitales.\n\nLa marque vit à deux endroits seulement : les tokens de `app/globals.css` (bloc `@theme` et `:root`) et les fichiers de `content/` (`marque.ts`, `parcours.ts`, `whatsapp.ts`), plus les logos de `public/marque/` et le chargement des deux polices dans `app/layout.tsx`. Une version Vireel réécrit ces fichiers ; les composants de `components/livret/` ne connaissent aucune couleur, police ni durée en dur.",
+    "keyCharacteristics": [
+      "Bleu nuit dominant (~70 %), clairs (~20 %), or (~10 %), conformément à la charte.",
+      "Entrées posées sur la réglure, jamais dans des cartes.",
+      "Page claire réservée à la fiche de demande et au reçu.",
+      "Fil de reliure or : la progression du tunnel, fixe pendant les changements de page.",
+      "Tampons typographiques : « film provisoire » sur les planches, « enregistrée » sur le reçu.",
+      "Pages tournées entre les étapes (View Transitions), entrées inscrites le long de la réglure.",
+      "Chaque effet a son repli : mouvement réduit, sans WebGL, sans script."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Rule",
+        "body": "L'or signale, il ne décore pas : action principale, focus, fil de reliure, tampon, liens d'action. Une seule surface pleine en or par écran, le bouton or ; tout le reste de l'or est de l'encre ou un filet.",
+        "section": "colors"
+      },
+      {
+        "name": "The Written Page Rule",
+        "body": "La page claire (`papier`) est réservée à ce qui s'écrit : la fiche de demande et le reçu. Aucune section de lecture ne passe en clair.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Inks Rule",
+        "body": "Sur papier, l'or devient `or-encre` et le focus suit (classe `page-claire`). `or-clair` n'est jamais posé sur le papier.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Display Rule",
+        "body": "Les titres Jost sont en graisse 300 ; la graisse 500 est réservée aux boutons, aux valeurs de réglure et aux légendes de champ.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stamp-Only Capitals Rule",
+        "body": "Les capitales espacées n'existent que dans le tampon et le mot « films » du compteur d'onglet. Aucun titre ni surtitre en petites capitales.",
+        "section": "typography"
+      },
+      {
+        "name": "The Margin Thread Rule",
+        "body": "Le fil de reliure est le seul repère de progression : 4 segments de 2 px, dans la marge gauche sur bureau, sous l'en-tête sur téléphone. Pas de barre d'étapes, pas de compteur de pourcentage.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Ledger Rule",
+        "body": "Une entrée de liste, une condition, un onglet ne reçoivent jamais d'ombre ni de fond : un filet au-dessus, un filet sous la dernière.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** poser chaque liste sur la réglure : filet `reglure` d'1 px au-dessus de chaque entrée, filet sous la dernière.",
+      "**Do** réserver la page `papier` à la fiche de demande et au reçu, avec `or-encre` et `papier-filet` pour tout signal ou contrôle qui s'y trouve.",
+      "**Do** limiter l'or plein à un seul bouton par écran, et utiliser `or-clair` pour les liens d'action et les signaux sur la nuit.",
+      "**Do** passer toute vignette de test en sourdine et la tamponner « film provisoire » tant que `VIDEOS_PROVISOIRES` vaut `true`.",
+      "**Do** passer entre étapes par la page tournée (`page-avant` / `page-arriere`) et garder l'en-tête et le fil fixes.",
+      "**Do** fournir un repli à chaque effet : état final sous mouvement réduit, fondu simple sans WebGL, contenu visible sans script.",
+      "**Do** tenir les cibles tactiles à 44 px au moins et les champs à 16 px au moins.",
+      "**Do** prendre toute couleur, police, durée ou marge dans les tokens de `app/globals.css`, et tout texte de marque dans `content/`."
+    ],
+    "donts": [
+      "**Don't** encadrer une entrée dans une carte à fond, bordure ou coins arrondis.",
+      "**Don't** alterner des sections claires et sombres pour rythmer la lecture : le clair est la page qui s'écrit.",
+      "**Don't** ajouter de texture de papier, de grain ni d'écriture manuscrite : la grammaire du livret, pas son déguisement.",
+      "**Don't** construire la landing fintech empilée (héros, bandeau de chiffres clés, grille de cartes, formulaire en bas).",
+      "**Don't** poser des surtitres en petites capitales au-dessus des titres ; les capitales espacées appartiennent au tampon.",
+      "**Don't** arrondir les boutons, champs, planches ou pages ; le cercle est réservé à la pastille, au disque de lecture et aux boutons-icônes.",
+      "**Don't** écrire une couleur en dur dans un composant."
+    ]
+  }
+}

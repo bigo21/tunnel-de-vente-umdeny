@@ -13,12 +13,11 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
     cle: "investisseur",
     libelle: "Parcours investisseur",
     titreMenu: "Cinq opportunités, cinq films courts.",
-    teinte: "accent",
     carteAccueil: {
       titre: "Je suis investisseur",
       accroche:
         "Cinq vidéos, cinq façons d'engager votre capital dans l'écosystème.",
-      action: "Voir les opportunités →",
+      action: "Voir les cinq films",
     },
     questionQualification: "Montant que vous envisagez de placer",
     optionsQualification: [
@@ -117,12 +116,11 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
     cle: "apporteur",
     libelle: "Parcours apporteur d'affaires",
     titreMenu: "Deux films pour cadrer votre rôle.",
-    teinte: "encre",
     carteAccueil: {
       titre: "Je suis apporteur d'affaires",
       accroche:
         "Deux vidéos : votre rôle, votre rémunération, et l'offre que vous portez.",
-      action: "Voir le parcours →",
+      action: "Voir les deux films",
     },
     questionQualification:
       "Secteur des entreprises que vous pouvez introduire",

@@ -3,125 +3,411 @@
 /* ---------------------------------------------------------------------------
    Charte Umdeny Capital.
 
-   Tout ce qui distingue une version de marque de l'autre est ici, en tokens
-   sémantiques. Basculer sur la charte Vireel se fait en réécrivant ce bloc —
-   aucun composant ne connaît une couleur en dur.
+   Tout ce qui distingue une marque de l'autre vit ici, en tokens sémantiques.
+   La version Vireel réécrit ce bloc ; aucun composant ne connaît une couleur,
+   une police ou une durée en dur.
 
-   Référence : « Charte Graphique Umdeny Capital », pages 04 (couleurs) et 06
-   (typographie). Répartition visée : ~70 % bleu, 20 % blancs et gris bleutés,
-   10 % or. L'or reste un signal, jamais un aplat de confort.
+   Répartition visée par la charte : ~70 % bleu nuit, ~20 % clairs, ~10 % or.
+   Le livret est en bleu ; la page claire est réservée à ce qui s'écrit (la
+   fiche de demande, le reçu) ; l'or ne marque que des signaux.
 --------------------------------------------------------------------------- */
 @theme {
   --font-titre: var(--police-titre), "Century Gothic", system-ui, sans-serif;
   --font-texte: var(--police-texte), Georgia, serif;
 
-  /* Fonds, du plus profond au plus relevé. */
-  --color-fond: #030929;
-  --color-fond-media: #050b22;
-  --color-fond-carte: #060c26;
-  --color-fond-carte-haut: #0a1138;
+  /* Le livret : bleu nuit, du fond au plus relevé. */
+  --color-nuit: #030929;
+  --color-nuit-releve: #081038;
+  --color-nuit-haut: #0e1847;
 
-  /* Filets et bordures. */
-  --color-bordure: #1c2450;
-  --color-bordure-forte: #2e376b;
+  /* Réglure : filets décoratifs, et filets de contrôle (≥ 3:1 sur la nuit). */
+  --color-reglure: #1c275a;
+  --color-reglure-forte: #5a6597;
 
-  /* Encres, du plus contrasté au plus discret. */
-  --color-encre: #ffffff;
-  --color-encre-douce: #b9c0dc;
-  --color-encre-tenue: #9aa2c4;
-  --color-encre-sourde: #8a92b8;
-  --color-encre-faible: #6e77a0;
+  /* Encres sur la nuit (contrastes mesurés : 17.9 / 10.4 / 6.3). */
+  --color-encre: #f3f5fb;
+  --color-encre-douce: #b4bcda;
+  --color-encre-sourde: #8891ba;
 
-  /* Accent de marque. */
-  --color-accent: #c08f51;
-  --color-accent-clair: #dfb56d;
-  --color-accent-fonce: #9e6632;
-  --color-sur-accent: #030929;
+  /* La page claire : fiche et reçu (contrastes mesurés : 17.3 / 7.9 / 4.8). */
+  --color-papier: #eef1f7;
+  --color-papier-releve: #e3e8f2;
+  --color-papier-encre: #030929;
+  --color-papier-encre-douce: #3d4775;
+  --color-papier-encre-sourde: #5e6890;
+  --color-papier-reglure: #c9d0e2;
+  --color-papier-filet: #6b7599;
+
+  /* L'or, signal. `or-encre` est l'or lisible sur papier (5.2:1). */
+  --color-or: #c08f51;
+  --color-or-clair: #dfb56d;
+  --color-or-fonce: #9e6632;
+  --color-or-encre: #8a5a2b;
+  --color-sur-or: #030929;
+
+  /* Erreur : sur la nuit (7.5:1) et sur papier (6.2:1). */
+  --color-alerte: #e8866f;
+  --color-alerte-papier: #a3301c;
+
+  /* Échelle typographique. Jost porte l'affichage à graisse légère ;
+     Spectral tient le texte courant. */
+  --text-affiche: clamp(2.6rem, 1.55rem + 4.6vw, 5.4rem);
+  --text-affiche--line-height: 1.02;
+  --text-affiche--letter-spacing: -0.028em;
+  --text-titre: clamp(2rem, 1.45rem + 2.4vw, 3.4rem);
+  --text-titre--line-height: 1.06;
+  --text-titre--letter-spacing: -0.022em;
+  --text-intertitre: clamp(1.35rem, 1.18rem + 0.7vw, 1.75rem);
+  --text-intertitre--line-height: 1.2;
+  --text-intertitre--letter-spacing: -0.01em;
+  --text-lecture: 1.0625rem;
+  --text-lecture--line-height: 1.65;
+  --text-chapeau: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+  --text-chapeau--line-height: 1.55;
+  --text-mention: 0.875rem;
+  --text-mention--line-height: 1.5;
+
+  --ease-livre: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-tourne: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --breakpoint-livret: 64rem;
 }
 
-/* Valeurs non exprimables en tokens Tailwind : dégradé et ombre de marque. */
 :root {
-  --degrade-accent: linear-gradient(140deg, #dfb56d, #9e6632);
-  --ombre-accent: 0 18px 50px rgba(3, 9, 41, 0.6);
-  /* Cadence du mouvement. Registre ample : la sortie libère vite la place,
-     l'entrée prend son temps, le déplacement porte sur toute la durée. */
-  --duree-sortie: 220ms;
-  --duree-entree: 320ms;
-  --duree-deplacement: 700ms;
-  --amplitude-glissement: 100px;
+  --degrade-or: linear-gradient(140deg, #dfb56d, #9e6632);
 
-  --voile-media: linear-gradient(
-    180deg,
-    rgba(3, 9, 41, 0.6) 0%,
-    rgba(3, 9, 41, 0.28) 42%,
-    rgba(3, 9, 41, 0.93) 100%
-  );
+  /* Ombres : seuls les objets posés sur la page en portent. */
+  --ombre-feuille: 0 40px 90px -50px rgb(0 0 0 / 0.95);
+  --ombre-planche: 0 30px 80px -40px rgb(0 0 0 / 0.9);
+  --ombre-lecture: 0 8px 24px -8px rgb(3 9 41 / 0.8);
+
+  /* Cadence : la sortie libère vite la place, l'entrée prend son temps. */
+  --duree-sortie: 180ms;
+  --duree-entree: 420ms;
+  --duree-page: 620ms;
+
+  /* Marges du livret. La marge gauche porte le fil de reliure. */
+  --gouttiere: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+  --reliure: clamp(1.25rem, 0.4rem + 3.6vw, 5.5rem);
+  --hauteur-entete: 4rem;
+
+  --z-planche: 1;
+  --z-barre: 30;
+  --z-entete: 40;
+  --z-fil: 45;
+  --z-evitement: 60;
+
+  color-scheme: dark;
+  scrollbar-color: var(--color-reglure-forte) var(--color-nuit);
+}
+
+html {
+  /* Laisse la place à l'en-tête et à la barre d'action quand le clavier
+     amène un champ sous l'une d'elles. */
+  scroll-padding-top: calc(var(--hauteur-entete) + 1rem);
+  scroll-padding-bottom: 6rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
 }
 
 body {
-  background: var(--color-fond);
+  background: var(--color-nuit);
   color: var(--color-encre);
-  font-family: var(--font-titre);
+  font-family: var(--font-texte);
+  font-size: var(--text-lecture);
+  line-height: var(--text-lecture--line-height);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
 
-/* La charte impose un focus visible dessiné, jamais l'anneau bleu du navigateur. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-titre);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Le focus est dessiné en or, jamais l'anneau du navigateur. Sur papier, l'or
+   foncé garde le contraste. */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-or);
   outline-offset: 3px;
+  border-radius: 2px;
+}
+.page-claire :focus-visible {
+  outline-color: var(--color-or-encre);
+}
+/* Les titres qui reçoivent le focus après un changement de page ne sont pas
+   des commandes : pas de cadre, le lecteur d'écran suffit. */
+[tabindex="-1"]:focus {
+  outline: none;
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-sur-accent);
+  background: var(--color-or);
+  color: var(--color-sur-or);
+}
+.page-claire ::selection {
+  background: var(--color-nuit);
+  color: var(--color-papier);
 }
 
-/* Le mouvement est piloté par Motion (composants) et GSAP (défilement).
-   Ne restent ici que les effets purement CSS qui n'ont pas besoin de JS. */
+input,
+select,
+textarea {
+  caret-color: var(--color-or-encre);
+}
 
-@keyframes reflet {
-  from {
-    transform: translateX(-120%);
+a {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+/* ---------------------------------------------------------------------------
+   Grammaire du livret
+--------------------------------------------------------------------------- */
+
+/* Le bouton or : réservé à l'action principale, un seul par écran. */
+@utility bouton-or {
+  background: var(--degrade-or);
+  color: var(--color-sur-or);
+  box-shadow: 0 10px 30px -12px rgb(192 143 81 / 0.55);
+  transition:
+    box-shadow var(--duree-entree) var(--ease-livre),
+    transform var(--duree-sortie) var(--ease-livre);
+
+  &:hover {
+    box-shadow: 0 16px 38px -14px rgb(223 181 109 / 0.7);
   }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Réglure : un filet d'un pixel entre deux entrées. */
+@utility regle {
+  border-top: 1px solid var(--color-reglure);
+}
+@utility regle-papier {
+  border-top: 1px solid var(--color-papier-reglure);
+}
+
+/* Le tampon « film provisoire » / « enregistrée ». Encre d'or à l'état de
+   tampon : double filet, capitales espacées, légère inclinaison. */
+@utility tampon {
+  font-family: var(--font-titre);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  color: var(--color-or-clair);
+  border: 1px solid currentColor;
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+  padding: 0.35rem 0.6rem;
+  transform: rotate(-4deg);
+  background: rgb(3 9 41 / 0.72);
+}
+
+/* Vignette provisoire : tant que les films définitifs ne sont pas livrés, les
+   vignettes de test sont passées en planche sourde (désaturée, assombrie)
+   pour ne pas parler plus fort que le livret. Le survol rend la couleur. */
+.planche-sourdine {
+  filter: grayscale(0.78) sepia(0.14) brightness(0.8) contrast(1.06);
+  transition: filter 700ms var(--ease-livre);
+}
+.group:hover .planche-sourdine,
+.group:focus-visible .planche-sourdine {
+  filter: grayscale(0.2) brightness(0.95);
+}
+
+/* ---------------------------------------------------------------------------
+   Saisie sur la page claire
+--------------------------------------------------------------------------- */
+.saisie {
+  border-color: var(--color-papier-filet);
+  border-radius: 0;
+}
+.saisie:hover {
+  border-color: var(--color-papier-encre-douce);
+}
+.saisie:focus-visible {
+  outline: none;
+  border-bottom-width: 2px;
+  border-color: var(--color-or-encre);
+}
+.saisie[aria-invalid="true"] {
+  border-color: var(--color-alerte-papier);
+}
+select.saisie {
+  appearance: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d4775' stroke-width='1.5'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E")
+    right center / 1.25rem no-repeat;
+  padding-right: 2rem;
+}
+
+/* Pastille (réponse unique) et case (consentement). */
+.pastille,
+.case {
+  appearance: none;
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  border: 1.5px solid var(--color-papier-filet);
+  background: var(--color-papier);
+  transition:
+    border-color var(--duree-sortie) ease,
+    background-color var(--duree-sortie) ease;
+  cursor: pointer;
+}
+.pastille {
+  border-radius: 999px;
+}
+.pastille:checked {
+  border-color: var(--color-or-encre);
+  background: radial-gradient(
+    circle,
+    var(--color-or-encre) 0 42%,
+    var(--color-papier) 46%
+  );
+}
+.case:checked {
+  border-color: var(--color-papier-encre);
+  background: var(--color-papier-encre)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dfb56d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l5 5 9.5-10.5'/%3E%3C/svg%3E")
+    center / 1rem no-repeat;
+}
+.case[aria-invalid="true"] {
+  border-color: var(--color-alerte-papier);
+}
+
+/* Le tampon du reçu se pose : il descend sur la page et s'y imprime. */
+@keyframes tampon-pose {
+  0% {
+    opacity: 0;
+    transform: rotate(-14deg) scale(1.7);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-3deg) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-4deg) scale(1);
+  }
+}
+.tampon-pose {
+  animation: tampon-pose 520ms var(--ease-livre) 380ms both;
+}
+
+/* Contenu révélé au défilement : visible par défaut, masqué seulement une
+   fois que le script a pris la main (classe posée par JS). */
+.js-mouvement [data-inscrire] {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* ---------------------------------------------------------------------------
+   Transitions entre pages : on tourne la page.
+   La page sortante se replie vers le haut, la suivante monte depuis la
+   réglure. En arrière, le geste s'inverse.
+--------------------------------------------------------------------------- */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page-avant) {
+  animation: var(--duree-sortie) var(--ease-tourne) both page-replie;
+}
+::view-transition-new(.page-avant) {
+  animation: var(--duree-page) var(--ease-livre) calc(var(--duree-sortie) * 0.6)
+    both page-monte;
+}
+::view-transition-old(.page-arriere) {
+  animation: var(--duree-sortie) var(--ease-tourne) both page-descend;
+}
+::view-transition-new(.page-arriere) {
+  animation: var(--duree-page) var(--ease-livre) calc(var(--duree-sortie) * 0.6)
+    both page-revient;
+}
+
+@keyframes page-replie {
   to {
-    transform: translateX(220%);
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    translate: 0 -3vh;
+  }
+}
+@keyframes page-monte {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    translate: 0 6vh;
+  }
+}
+@keyframes page-descend {
+  to {
+    opacity: 0;
+    translate: 0 4vh;
+  }
+}
+@keyframes page-revient {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    translate: 0 -4vh;
   }
 }
 
-@utility reflet-media {
-  animation: reflet 7s linear infinite;
+/* La planche d'un film reste la même d'une page à l'autre. */
+::view-transition-group(.planche) {
+  animation-duration: var(--duree-page);
+  animation-timing-function: var(--ease-livre);
+}
+::view-transition-image-pair(.planche) {
+  isolation: isolate;
+}
 
-  @media (prefers-reduced-motion: reduce) {
+/* L'en-tête et le fil de reliure ne bougent pas : ce sont les repères fixes. */
+::view-transition-group(entete),
+::view-transition-group(fil) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(entete),
+::view-transition-old(fil) {
+  display: none;
+}
+::view-transition-new(entete),
+::view-transition-new(fil) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+  .js-mouvement [data-inscrire] {
+    clip-path: none;
+  }
+  .tampon-pose {
     animation: none;
   }
-}
-
-/* Le bouton or : fond dégradé, texte bleu nuit. Réservé à l'action principale
-   d'un écran — un seul par écran. */
-@utility bouton-or {
-  background: var(--degrade-accent);
-  color: var(--color-sur-accent);
-}
-
-/* Le halo qui accompagne l'élévation d'une carte. Le soulèvement lui-même est
-   animé par Motion, en ressort. */
-@utility halo-carte {
-  transition: border-color 0.25s ease, box-shadow 0.35s ease;
-
-  &:hover,
-  &:focus-visible {
-    box-shadow:
-      0 18px 44px rgba(2, 5, 20, 0.55),
-      0 0 0 1px rgba(192, 143, 81, 0.35),
-      0 0 38px -8px rgba(223, 181, 109, 0.3);
-  }
-}
-
-/* Masque le temps que GSAP prenne la main, pour éviter le flash de contenu
-   déjà en place avant sa première image. */
-@utility avant-reveal {
-  opacity: 0;
-
-  @media (prefers-reduced-motion: reduce) {
-    opacity: 1;
+  html {
+    scroll-behavior: auto;
   }
 }
