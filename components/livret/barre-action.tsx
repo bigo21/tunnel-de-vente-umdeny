@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { IconeLienExterne } from "./icones";
 
 /**
  * Barre d'action du téléphone : une fois la planche dépassée, l'action
@@ -12,10 +13,13 @@ import Link from "next/link";
 export function BarreAction({
   href,
   libelle,
+  externe = false,
   apres,
   avant,
 }: {
   href: string;
+  /** Le formulaire est hébergé ailleurs : lien sortant, nouvel onglet. */
+  externe?: boolean;
   libelle: string;
   /** Id de l'élément à dépasser avant d'afficher la barre. */
   apres: string;
@@ -52,13 +56,25 @@ export function BarreAction({
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
-      <Link
-        href={href}
-        transitionTypes={["page-avant"]}
-        className="bouton-or flex min-h-12 w-full items-center justify-center px-5 font-titre text-[0.9375rem] font-medium"
-      >
-        {libelle}
-      </Link>
+      {externe ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bouton-or flex min-h-12 w-full items-center justify-center gap-2 px-5 font-titre text-[0.9375rem] font-medium"
+        >
+          {libelle}
+          <IconeLienExterne className="size-4 shrink-0" />
+        </a>
+      ) : (
+        <Link
+          href={href}
+          transitionTypes={["page-avant"]}
+          className="bouton-or flex min-h-12 w-full items-center justify-center px-5 font-titre text-[0.9375rem] font-medium"
+        >
+          {libelle}
+        </Link>
+      )}
     </div>
   );
 }

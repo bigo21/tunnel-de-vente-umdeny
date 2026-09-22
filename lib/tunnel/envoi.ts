@@ -89,6 +89,8 @@ export const CLE_RECU = "livret:recu";
 
 export type Recu = {
   nom: string;
+  /** Clé du formulaire envoyé : décide du texte du reçu. */
+  formulaire: string;
   telephone: string;
   objet: string;
   parcours: string;

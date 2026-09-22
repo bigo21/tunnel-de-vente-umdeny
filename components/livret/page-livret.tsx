@@ -37,11 +37,10 @@ export function PageLivret({
     if (!racine.current) return;
     cheminInitial ??= window.location.pathname;
     const navigation = window.location.pathname !== cheminInitial;
-    // Si le masquage a été levé (application trop lente à démarrer), le
-    // contenu est déjà là : on ne rejoue pas son apparition par-dessus.
-    const arme = document.documentElement.classList.contains("js-mouvement");
-    entreePage(racine.current, { mouvement: mouvement && arme, navigation });
-    inscrireEntrees(racine.current, { mouvement: mouvement && arme });
+    // Le filet de <head> a pu lever le masquage si l'application a tardé : le
+    // mouvement se joue quand même, simplement depuis l'état visible.
+    entreePage(racine.current, { mouvement, navigation });
+    return inscrireEntrees(racine.current, { mouvement });
   });
 
   useEffect(() => {

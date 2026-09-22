@@ -60,6 +60,15 @@ export function IconePlus(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function IconeLienExterne(props: SVGProps<SVGSVGElement>) {
+  return (
+    <Base {...props}>
+      <path d="M13 5h6v6M19 5l-8.5 8.5" />
+      <path d="M17.5 14v4.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5V8a1.5 1.5 0 0 1 1.5-1.5H10" />
+    </Base>
+  );
+}
+
 export function IconeCoche(props: SVGProps<SVGSVGElement>) {
   return (
     <Base {...props}>

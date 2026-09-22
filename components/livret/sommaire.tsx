@@ -146,17 +146,18 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
               transitionTypes={["page-avant"]}
               onPointerEnter={() => montrer(rang)}
               onFocus={() => montrer(rang)}
-              className="group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-3 py-6 livret:grid-cols-[2.75rem_minmax(0,1fr)_auto] livret:gap-x-5 livret:py-7"
+              className="group block py-6 livret:py-7"
             >
               <span
-                aria-hidden="true"
-                className={`pt-1 font-titre text-mention tabular-nums transition-colors ${
-                  rang === actif ? "livret:text-or-clair" : ""
-                } text-encre-sourde`}
+                className={`inline-block rounded-sm border px-2 py-0.5 font-titre text-[0.6875rem] tracking-[0.1em] whitespace-nowrap uppercase transition-colors ${
+                  rang === actif
+                    ? "livret:border-or livret:text-or-clair"
+                    : "border-reglure-forte text-encre-sourde"
+                }`}
               >
-                {sujet.numero}
+                {sujet.etiquette}
               </span>
-              <span className="min-w-0">
+              <span className="mt-2.5 block min-w-0">
                 <span className="block font-titre text-intertitre font-normal text-encre transition-colors group-hover:text-or-clair">
                   {sujet.titre}
                 </span>
@@ -171,17 +172,21 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
                   >
                     <span className="relative block aspect-video overflow-hidden bg-nuit-releve">
                       <Image
-                        src={afficheVideo(sujet.video.id)}
+                        src={sujet.illustration?.src ?? afficheVideo(sujet.video.id)}
                         width={AFFICHE_LARGEUR}
                         height={AFFICHE_HAUTEUR}
-                        alt=""
+                        alt={sujet.illustration?.alt ?? ""}
                         sizes="(min-width: 64rem) 1px, 100vw"
                         loading={rang === 0 ? "eager" : "lazy"}
-                        className={`size-full object-cover ${VIDEOS_PROVISOIRES ? "planche-sourdine" : ""}`}
+                        className={`size-full object-cover ${
+                          !sujet.illustration && VIDEOS_PROVISOIRES
+                            ? "planche-sourdine"
+                            : ""
+                        }`}
                       />
-                      {VIDEOS_PROVISOIRES && (
+                      {!sujet.illustration && VIDEOS_PROVISOIRES && (
                         <span className="tampon absolute top-3 right-3">
-                          {MARQUE.lecteur.provisoire}
+                          {MARQUE.lecteur.imageProvisoire}
                         </span>
                       )}
                     </span>
@@ -230,7 +235,7 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
                   ref={(el) => {
                     images.current[rang] = el;
                   }}
-                  src={afficheVideo(sujet.video.id)}
+                  src={sujet.illustration?.src ?? afficheVideo(sujet.video.id)}
                   width={AFFICHE_LARGEUR}
                   height={AFFICHE_HAUTEUR}
                   alt=""
@@ -248,9 +253,9 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
                   webgl ? "opacity-100" : "opacity-0"
                 }`}
               />
-              {VIDEOS_PROVISOIRES && (
+              {!sujetActif.illustration && VIDEOS_PROVISOIRES && (
                 <span className="tampon absolute top-4 right-4">
-                  {MARQUE.lecteur.provisoire}
+                  {MARQUE.lecteur.imageProvisoire}
                 </span>
               )}
             </div>
@@ -261,9 +266,9 @@ export function Sommaire({ parcours }: { parcours: Parcours }) {
               {sujetActif.video.duree}
             </span>
           </div>
-          {VIDEOS_PROVISOIRES && (
+          {!sujetActif.illustration && VIDEOS_PROVISOIRES && (
             <p className="mt-1 font-titre text-mention text-encre-sourde">
-              {MARQUE.lecteur.mentionProvisoire}
+              {MARQUE.lecteur.mentionImageProvisoire}
             </p>
           )}
         </div>

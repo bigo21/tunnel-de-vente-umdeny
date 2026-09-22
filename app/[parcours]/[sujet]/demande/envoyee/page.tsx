@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MARQUE } from "@/content/marque";
-import { PARCOURS } from "@/content/parcours";
 import { PageLivret } from "@/components/livret/page-livret";
 import { Recu } from "@/components/livret/recu";
-import { CLES_PARCOURS, trouverSujet } from "@/lib/tunnel/livret";
+import { sujetsAvecFiche, trouverSujet } from "@/lib/tunnel/livret";
 
 export const dynamicParams = false;
 
+/** Seuls les sujets dont un formulaire est rempli sur le tunnel ont ces pages. */
 export function generateStaticParams() {
-  return CLES_PARCOURS.flatMap((parcours) =>
-    PARCOURS[parcours].themes.map((t) => ({ parcours, sujet: t.cle })),
-  );
+  return sujetsAvecFiche();
 }
 
 export const metadata: Metadata = {

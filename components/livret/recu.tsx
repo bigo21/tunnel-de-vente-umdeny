@@ -73,6 +73,12 @@ export function Recu({ parcours, sujet }: { parcours: Parcours; sujet: Theme }) 
   }
 
   const prenom = recu.nom.split(/\s+/)[0] ?? "";
+  // Une demande de document ne se confirme pas comme une demande de rappel.
+  const variante = recu.formulaire?.startsWith("document")
+    ? textes.document
+    : textes;
+  const titreRecu = ENVOI_BRANCHE ? variante.titre : variante.titreDemo;
+  const texteRecu = ENVOI_BRANCHE ? variante.texte : variante.texteDemo;
   const lignes = [
     { libelle: textes.objet, valeur: recu.objet },
     { libelle: textes.sujet, valeur: sujet.titre },
@@ -95,10 +101,10 @@ export function Recu({ parcours, sujet }: { parcours: Parcours; sujet: Theme }) 
           data-tardif
           className="max-w-[14ch] pr-28 text-titre font-light text-papier-encre outline-none"
         >
-          {ENVOI_BRANCHE ? textes.titre : textes.titreDemo}
+          {titreRecu}
         </h1>
         <p className="mt-5 max-w-[46ch] text-papier-encre-douce">
-          {remplir(ENVOI_BRANCHE ? textes.texte : textes.texteDemo, { prenom })}
+          {remplir(texteRecu, { prenom })}
         </p>
         {!ENVOI_BRANCHE && (
           <p className="mt-4 bg-papier-releve px-4 py-3 font-titre text-mention text-papier-encre-douce">

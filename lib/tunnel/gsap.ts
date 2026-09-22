@@ -128,13 +128,28 @@ export function entreePage(
  * filet se trace, puis le texte apparaît de gauche à droite, comme écrit à la
  * main sur la ligne. Le contenu reste lisible sans script (voir globals.css).
  */
-export function inscrireEntrees(racine: HTMLElement, { mouvement }: Portee) {
+export function inscrireEntrees(
+  racine: HTMLElement,
+  { mouvement }: Portee,
+): (() => void) | void {
   const entrees = racine.querySelectorAll<HTMLElement>("[data-inscrire]");
   if (!entrees.length) return;
   if (!mouvement) {
     gsap.set(entrees, { clipPath: "inset(0 0% 0 0)" });
     return;
   }
+  // Filet : sur un appareil où le déclencheur ne s'arme pas, un texte déjà à
+  // l'écran ne doit pas rester masqué. Au bout de trois secondes, on le pose.
+  const secours = window.setTimeout(() => {
+    entrees.forEach((entree) => {
+      const boite = entree.getBoundingClientRect();
+      const visible = boite.top < window.innerHeight && boite.bottom > 0;
+      if (visible && getComputedStyle(entree).clipPath !== "none") {
+        gsap.set(entree, { clipPath: "inset(0 0% 0 0)" });
+      }
+    });
+  }, 3000);
+
   entrees.forEach((entree) => {
     gsap.fromTo(
       entree,
@@ -147,4 +162,6 @@ export function inscrireEntrees(racine: HTMLElement, { mouvement }: Portee) {
       },
     );
   });
+
+  return () => window.clearTimeout(secours);
 }

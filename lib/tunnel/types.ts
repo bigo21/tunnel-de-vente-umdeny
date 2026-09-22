@@ -8,11 +8,32 @@ import type { Video } from "./video";
 
 export type CleParcours = "investisseur" | "apporteur";
 
+/**
+ * Un formulaire proposé à la fin d'un sujet.
+ *
+ * Deux cas, et c'est la présence de `lien` qui les distingue :
+ * - **interne** : le formulaire est rempli sur le tunnel, qui affiche ensuite
+ *   son propre reçu ;
+ * - **externe** : le formulaire existe déjà sur un autre site du groupe ; le
+ *   tunnel n'y renvoie que par un lien, et la confirmation est gérée là-bas.
+ */
+export type Formulaire = {
+  cle: string;
+  libelle: string;
+  /** Adresse du formulaire déjà en ligne. Absent = formulaire du tunnel. */
+  lien?: string;
+};
+
 /** Un sujet du parcours : une vidéo, un triptyque rédigé, et ses formulaires. */
 export type Theme = {
   cle: string;
-  /** Numéro affiché sur la vignette, sur deux chiffres. */
-  numero: string;
+  /** Mot-clé du sujet, affiché en étiquette (GAB, WiFi Zone…). */
+  etiquette: string;
+  /**
+   * Illustration de l'encart, à fournir par le client. Tant qu'elle manque,
+   * le sommaire retombe sur la miniature du film, marquée provisoire.
+   */
+  illustration?: { src: string; alt: string };
   /** La vidéo YouTube du sujet : identifiant et durée annoncée. */
   video: Video;
   titre: string;
@@ -21,10 +42,10 @@ export type Theme = {
   probleme: string;
   solution: string;
   /**
-   * Libellés des formulaires proposés à la fin du sujet. Le premier est
-   * l'action principale et prend le bouton or.
+   * Les formulaires du sujet. Le premier est l'action principale et prend le
+   * bouton or.
    */
-  formulaires: [string, ...string[]];
+  formulaires: [Formulaire, ...Formulaire[]];
 };
 
 export type Parcours = {

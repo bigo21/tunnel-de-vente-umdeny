@@ -1,3 +1,4 @@
+import { FORMULAIRES } from "./formulaires";
 import type { CleParcours, Parcours } from "@/lib/tunnel/types";
 
 /**
@@ -33,7 +34,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
     themes: [
       {
         cle: "ecosysteme",
-        numero: "01",
+        etiquette: "Général",
         video: { id: "TLkA0RELQ1g", duree: "1 min 30" },
         titre: "L'écosystème Umdeny Capital",
         accroche:
@@ -44,11 +45,11 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Conditions floues, ticket d'entrée trop élevé, et personne pour expliquer ce que l'on signe.",
         solution:
           "Umdeny Capital opère ou finance quatre activités concrètes. Des conditions écrites, et un entretien avant tout engagement.",
-        formulaires: ["Vérifier mon profil investisseur"],
+        formulaires: [FORMULAIRES.profil],
       },
       {
         cle: "mobile-money",
-        numero: "02",
+        etiquette: "GAB",
         video: { id: "Y-rmzh0PI3c", duree: "2 min" },
         titre: "Distributeur Mobile Money",
         accroche:
@@ -59,14 +60,11 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Un point demande un fonds de roulement permanent et une présence chaque jour.",
         solution:
           "Vous financez le fonds de roulement, l'exploitation est prise en charge. Votre rémunération suit les commissions, avec un relevé chaque mois.",
-        formulaires: [
-          "Vérifier mon profil investisseur",
-          "Recevoir le document détaillé",
-        ],
+        formulaires: [FORMULAIRES.profil, FORMULAIRES.documentMobileMoney],
       },
       {
         cle: "wifi",
-        numero: "03",
+        etiquette: "WiFi Zone",
         video: { id: "WhWc3b3KhnY", duree: "1 min 45" },
         titre: "Borne WiFi Zone",
         accroche:
@@ -77,11 +75,15 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Une borne demande du matériel, un abonnement et de l'entretien : difficile à tenir seul.",
         solution:
           "Les bornes sont installées et entretenues pour vous. Vous percevez une part des connexions vendues, avec un relevé par borne.",
-        formulaires: ["Vérifier mon profil investisseur", "Demande de cotation"],
+        formulaires: [
+          FORMULAIRES.profil,
+          FORMULAIRES.cotationWifi,
+          FORMULAIRES.documentWifi,
+        ],
       },
       {
         cle: "financement-participatif",
-        numero: "04",
+        etiquette: "Crowdlending",
         video: { id: "SkVqJ1SGeL0", duree: "2 min 10" },
         titre: "Financement participatif",
         accroche:
@@ -92,11 +94,11 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Prêter directement, sans analyse ni contrat, c'est prendre un risque que l'on ne mesure pas.",
         solution:
           "Chaque dossier est étudié, avec échéancier et garanties. Vous lisez le dossier complet avant de décider.",
-        formulaires: ["Recevoir un dossier de financement"],
+        formulaires: [FORMULAIRES.profil],
       },
       {
         cle: "bourse",
-        numero: "05",
+        etiquette: "Bourse",
         video: { id: "R6MlUcmOul8", duree: "2 min" },
         titre: "Bourse — actions, obligations, ETF",
         accroche:
@@ -107,10 +109,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Sans méthode, on achète trop cher et on vend dans la panique.",
         solution:
           "On vous aide à ouvrir votre compte et à fixer un plan ; les décisions restent les vôtres. Risque de perte en capital.",
-        formulaires: [
-          "Vérifier mon profil investisseur",
-          "Accompagnement à l'ouverture de compte",
-        ],
+        formulaires: [FORMULAIRES.profil],
       },
     ],
   },
@@ -137,7 +136,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
     themes: [
       {
         cle: "role-apporteur",
-        numero: "01",
+        etiquette: "Général",
         video: { id: "mN0zPOpADL4", duree: "1 min 40" },
         titre: "Le rôle d'apporteur d'affaires",
         accroche:
@@ -148,11 +147,11 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Sans cadre écrit, une commission promise à l'oral finit souvent en désaccord.",
         solution:
           "Une convention signée, chaque introduction enregistrée, et une commission versée dès que la facture est payée.",
-        formulaires: ["Devenir apporteur d'affaires"],
+        formulaires: [FORMULAIRES.apporteur],
       },
       {
         cle: "ip-dedie",
-        numero: "02",
+        etiquette: "IP publique",
         video: { id: "_cMxraX_5RE", duree: "1 min 30" },
         titre: "Internet IP Dédié",
         accroche:
@@ -163,7 +162,7 @@ export const PARCOURS: Record<CleParcours, Parcours> = {
           "Elles paient un débit qu'elles n'ont pas toujours, sans garantie de réparation rapide.",
         solution:
           "Une liaison dédiée, un débit garanti, une IP fixe et un délai d'intervention prévu au contrat. Vous présentez, le groupe chiffre et installe.",
-        formulaires: ["Demande de cotation", "Recevoir la plaquette"],
+        formulaires: [FORMULAIRES.apporteur],
       },
     ],
   },

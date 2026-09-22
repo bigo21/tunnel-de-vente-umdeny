@@ -16,14 +16,14 @@ import {
   verifierDemande,
   type ChampVerifie,
 } from "@/lib/tunnel/envoi";
-import { chemin } from "@/lib/tunnel/livret";
+import { chemin, formulairesInternes } from "@/lib/tunnel/livret";
 import type { Demande, Parcours, Theme } from "@/lib/tunnel/types";
 import { IconeAlerte, IconePlus, IconeSuite } from "./icones";
 
 type Props = {
   parcours: Parcours;
   sujet: Theme;
-  objetInitial?: number;
+  objetInitial?: string;
   /**
    * Reprendre le brouillon gardé sur l'appareil. Réservé au rendu client
    * (sous la frontière Suspense de `useSearchParams`), jamais au rendu serveur.
@@ -34,8 +34,13 @@ type Props = {
 /** Lit l'objet choisi sur la page sujet (`?objet=2`), puis rend la fiche. */
 export function FicheAvecObjet(props: Omit<Props, "objetInitial">) {
   const recherche = useSearchParams();
-  const objet = Number(recherche.get("objet")) || 1;
-  return <FicheDemande {...props} objetInitial={objet} restaurer />;
+  return (
+    <FicheDemande
+      {...props}
+      objetInitial={recherche.get("objet") ?? undefined}
+      restaurer
+    />
+  );
 }
 
 /**
@@ -84,15 +89,17 @@ const ORDRE: ChampVerifie[] = [
 export function FicheDemande({
   parcours,
   sujet,
-  objetInitial = 1,
+  objetInitial,
   restaurer = false,
 }: Props) {
   const router = useRouter();
   const id = useId();
   const { demande: textes } = MARQUE;
-  const objets = sujet.formulaires;
+  // Seuls les formulaires du tunnel : les autres sont des liens sortants,
+  // traités sur la page du sujet.
+  const objets = formulairesInternes(sujet);
   const [objet, setObjet] = useState(
-    Math.min(Math.max(objetInitial, 1), objets.length),
+    () => objets.find((f) => f.cle === objetInitial) ?? objets[0],
   );
   const [demande, setDemande] = useState<Demande>(() => {
     const brouillon = restaurer ? memoire.lireBrouillon(sujet.cle) : null;
@@ -137,12 +144,13 @@ export function FicheDemande({
       await envoyerDemande(demande, {
         parcours: parcours.cle,
         theme: sujet.cle,
-        formulaire: objets[objet - 1],
+        formulaire: objet.libelle,
       });
       memoire.ecrireRecu({
         nom: demande.nom.trim(),
         telephone: demande.telephone.trim(),
-        objet: objets[objet - 1],
+        objet: objet.libelle,
+        formulaire: objet.cle,
         parcours: parcours.cle,
         sujet: sujet.cle,
       });
@@ -212,14 +220,14 @@ export function FicheDemande({
             {textes.objet}
           </legend>
           <div className="mt-2">
-            {objets.map((libelle, i) => (
+            {objets.map((formulaire) => (
               <Choix
-                key={libelle}
+                key={formulaire.cle}
                 name={`${id}-objet`}
-                checked={objet === i + 1}
-                onChange={() => setObjet(i + 1)}
+                checked={objet.cle === formulaire.cle}
+                onChange={() => setObjet(formulaire)}
               >
-                {libelle}
+                {formulaire.libelle}
               </Choix>
             ))}
           </div>
@@ -227,7 +235,9 @@ export function FicheDemande({
       ) : (
         <p className="font-titre text-[0.9375rem] text-papier-encre-douce">
           {textes.objet} :{" "}
-          <span className="font-medium text-papier-encre">{objets[0]}</span>
+          <span className="font-medium text-papier-encre">
+            {objets[0].libelle}
+          </span>
         </p>
       )}
 

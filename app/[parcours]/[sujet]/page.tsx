@@ -5,10 +5,19 @@ import { MARQUE, remplir } from "@/content/marque";
 import { PARCOURS } from "@/content/parcours";
 import { BarreAction } from "@/components/livret/barre-action";
 import { Conditions } from "@/components/livret/conditions";
-import { IconeRetour, IconeSuite } from "@/components/livret/icones";
+import {
+  IconeLienExterne,
+  IconeRetour,
+  IconeSuite,
+} from "@/components/livret/icones";
 import { PageLivret } from "@/components/livret/page-livret";
 import { Planche } from "@/components/livret/planche";
-import { CLES_PARCOURS, chemin, trouverSujet } from "@/lib/tunnel/livret";
+import {
+  CLES_PARCOURS,
+  chemin,
+  domaine,
+  trouverSujet,
+} from "@/lib/tunnel/livret";
 
 export const dynamicParams = false;
 
@@ -125,17 +134,36 @@ export default async function PageSujet({
               </p>
               <Conditions className="mt-6" />
 
-              <Link
-                id="action-sujet"
-                href={chemin.demande(parcours.cle, sujet.cle)}
-                transitionTypes={["page-avant"]}
-                className="bouton-or mt-8 flex min-h-14 w-full items-center justify-between gap-4 px-6 font-titre text-base font-medium sm:w-auto sm:min-w-80"
-              >
-                {libelles.action}
-                <IconeSuite className="size-5 shrink-0" />
-              </Link>
+              {/* Action principale : le formulaire du tunnel, ou le site qui
+                  héberge déjà ce formulaire. */}
+              {principal.lien ? (
+                <a
+                  id="action-sujet"
+                  href={principal.lien}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bouton-or mt-8 flex min-h-14 w-full items-center justify-between gap-4 px-6 font-titre text-base font-medium sm:w-auto sm:min-w-80"
+                >
+                  {principal.libelle}
+                  <IconeLienExterne className="size-5 shrink-0" />
+                </a>
+              ) : (
+                <Link
+                  id="action-sujet"
+                  href={chemin.demande(parcours.cle, sujet.cle, principal.cle)}
+                  transitionTypes={["page-avant"]}
+                  className="bouton-or mt-8 flex min-h-14 w-full items-center justify-between gap-4 px-6 font-titre text-base font-medium sm:w-auto sm:min-w-80"
+                >
+                  {libelles.action}
+                  <IconeSuite className="size-5 shrink-0" />
+                </Link>
+              )}
               <p className="mt-3 font-titre text-mention text-encre-douce">
-                {remplir(libelles.objetAction, { objet: principal })}
+                {principal.lien
+                  ? remplir(libelles.mentionExterne, {
+                      domaine: domaine(principal.lien),
+                    })
+                  : remplir(libelles.objetAction, { objet: principal.libelle })}
               </p>
 
               {autres.length > 0 && (
@@ -144,15 +172,34 @@ export default async function PageSujet({
                     {libelles.autresDemandes}
                   </p>
                   <ul className="mt-1">
-                    {autres.map((libelle, i) => (
-                      <li key={libelle}>
-                        <Link
-                          href={chemin.demande(parcours.cle, sujet.cle, i + 2)}
-                          transitionTypes={["page-avant"]}
-                          className="inline-flex min-h-11 items-center gap-2 font-titre text-[0.9375rem] text-or-clair underline decoration-or/40 underline-offset-4 hover:decoration-or-clair"
-                        >
-                          {libelle}
-                        </Link>
+                    {autres.map((formulaire) => (
+                      <li key={formulaire.cle}>
+                        {formulaire.lien ? (
+                          <a
+                            href={formulaire.lien}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex min-h-11 items-center gap-2 font-titre text-[0.9375rem] text-or-clair underline decoration-or/40 underline-offset-4 hover:decoration-or-clair"
+                          >
+                            {formulaire.libelle}
+                            <IconeLienExterne className="size-4 shrink-0" />
+                            <span className="text-encre-sourde no-underline">
+                              {domaine(formulaire.lien)}
+                            </span>
+                          </a>
+                        ) : (
+                          <Link
+                            href={chemin.demande(
+                              parcours.cle,
+                              sujet.cle,
+                              formulaire.cle,
+                            )}
+                            transitionTypes={["page-avant"]}
+                            className="inline-flex min-h-11 items-center gap-2 font-titre text-[0.9375rem] text-or-clair underline decoration-or/40 underline-offset-4 hover:decoration-or-clair"
+                          >
+                            {formulaire.libelle}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -204,8 +251,11 @@ export default async function PageSujet({
       </article>
 
       <BarreAction
-        href={chemin.demande(parcours.cle, sujet.cle)}
-        libelle={libelles.action}
+        href={
+          principal.lien ?? chemin.demande(parcours.cle, sujet.cle, principal.cle)
+        }
+        externe={Boolean(principal.lien)}
+        libelle={principal.lien ? principal.libelle : libelles.action}
         apres="planche-sujet"
         avant="action-sujet"
       />

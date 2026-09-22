@@ -1,5 +1,5 @@
 import { PARCOURS } from "@/content/parcours";
-import type { CleParcours, Parcours, Theme } from "./types";
+import type { CleParcours, Formulaire, Parcours, Theme } from "./types";
 
 /**
  * Plan du livret : les routes du tunnel et la façon de retrouver un parcours
@@ -33,11 +33,34 @@ export function trouverSujet(
   return { parcours, sujet: parcours.themes[rang], rang };
 }
 
+/** Les formulaires remplis sur le tunnel (les autres sont des liens sortants). */
+export function formulairesInternes(sujet: Theme): Formulaire[] {
+  return sujet.formulaires.filter((f) => !f.lien);
+}
+
+/** Tous les sujets qui ont au moins un formulaire rempli sur le tunnel. */
+export function sujetsAvecFiche(): { parcours: CleParcours; sujet: string }[] {
+  return CLES_PARCOURS.flatMap((parcours) =>
+    PARCOURS[parcours].themes
+      .filter((t) => formulairesInternes(t).length > 0)
+      .map((t) => ({ parcours, sujet: t.cle })),
+  );
+}
+
+/** Le nom de domaine d'un formulaire externe, montré avant de quitter le site. */
+export function domaine(lien: string): string {
+  try {
+    return new URL(lien).hostname.replace(/^www\./, "");
+  } catch {
+    return lien;
+  }
+}
+
 export const chemin = {
   couverture: () => "/",
   sommaire: (p: CleParcours) => `/${p}`,
   sujet: (p: CleParcours, s: string) => `/${p}/${s}`,
-  demande: (p: CleParcours, s: string, formulaire?: number) =>
+  demande: (p: CleParcours, s: string, formulaire?: string) =>
     `/${p}/${s}/demande${formulaire ? `?objet=${formulaire}` : ""}`,
   recu: (p: CleParcours, s: string) => `/${p}/${s}/demande/envoyee`,
 };

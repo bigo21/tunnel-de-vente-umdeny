@@ -91,6 +91,10 @@ export const MARQUE = {
     /** Consigne sous le titre d'un sujet : c'est le film qui explique. */
     guide: "Commencez par le film : il explique l'essentiel. Le texte ci-dessous le résume.",
     action: "Demander un rappel",
+    /** Action principale quand le formulaire est déjà en ligne ailleurs. */
+    actionExterne: "Remplir le formulaire",
+    /** `{domaine}` : le site qui héberge le formulaire. */
+    mentionExterne: "Formulaire hébergé sur {domaine}, dans un nouvel onglet.",
     /** Sous le bouton principal : l'objet de la demande. `{objet}` : libellé. */
     objetAction: "Objet : {objet}",
     autresDemandes: "Ou, pour ce sujet :",
@@ -137,6 +141,15 @@ export const MARQUE = {
   recu: {
     titre: "Votre demande est enregistrée.",
     tampon: "Enregistrée",
+    /** Reçu d'une demande de document : ce qui change par rapport au rappel. */
+    document: {
+      titre: "Votre demande de document est enregistrée.",
+      texte:
+        "Merci {prenom}. Le document vous est envoyé, et un conseiller vous rappelle sous 48 heures ouvrées au numéro indiqué.",
+      titreDemo: "Votre demande de document est prête à être transmise.",
+      texteDemo:
+        "Merci {prenom}. Une fois la transmission branchée, le document vous sera envoyé et un conseiller vous rappellera sous 48 heures ouvrées.",
+    },
     /** `{prenom}` : premier mot du nom saisi. */
     texte:
       "Merci {prenom}. Un conseiller Umdeny Capital vous rappelle sous 48 heures ouvrées au numéro indiqué.",
@@ -181,6 +194,10 @@ export const MARQUE = {
 
   lecteur: {
     provisoire: "Film provisoire",
+    /** Vignette du sommaire, en attendant les illustrations du client. */
+    imageProvisoire: "Image provisoire",
+    mentionImageProvisoire:
+      "Image de test : l'illustration définitive reste à fournir.",
     mentionProvisoire:
       "Vidéo de test : le film définitif reste à livrer.",
     chargement: "Chargement du lecteur…",
