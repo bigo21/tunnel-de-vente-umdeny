@@ -111,6 +111,16 @@ export function Diagnostic() {
         ci-dessous en donne la raison.
       </p>
 
+      <noscript>
+        <p className="mt-8 bg-nuit-releve px-4 py-3 text-[0.9375rem] text-alerte">
+          Le JavaScript ne s&apos;exécute pas sur cette page. En développement,
+          c&apos;est presque toujours l&apos;adresse : Next ne sert ses scripts
+          qu&apos;aux origines autorisées (voir allowedDevOrigins dans
+          next.config.ts). Ouvrez le site en production, ou ajoutez
+          l&apos;adresse utilisée par l&apos;appareil.
+        </p>
+      </noscript>
+
       <div className="mt-8 overflow-hidden border-y border-reglure py-6">
         <div ref={temoin} className="size-12 bg-or" aria-hidden="true" />
       </div>
@@ -137,12 +147,19 @@ export function Diagnostic() {
         ))}
         {!mesures && (
           <p className="py-4 text-encre-sourde" aria-live="polite">
-            Relevé en cours…
+            Relevé en cours… S&apos;il reste affiché, c&apos;est que le script
+            de la page ne s&apos;exécute pas : voir la note ci-dessous.
           </p>
         )}
       </dl>
 
       <p className="mt-8 font-titre text-mention text-encre-sourde">
+        Relevé bloqué ou page figée sur un autre appareil : vérifiez
+        l&apos;adresse d&apos;accès. En développement, seules les origines
+        listées dans next.config.ts reçoivent les scripts ; en production, il
+        n&apos;y a pas cette restriction.
+      </p>
+      <p className="mt-3 font-titre text-mention text-encre-sourde">
         Si « Mouvement réduit » indique oui : Android, Paramètres → Accessibilité →
         Supprimer les animations. iPhone, Réglages → Accessibilité → Mouvement →
         Réduire les animations.
