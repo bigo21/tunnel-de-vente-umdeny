@@ -42,3 +42,6 @@ next-env.d.ts
 
 # design mockups (local only)
 /mockup_Tunnel_Umdeny/
+
+# outils de design (local uniquement)
+/.impeccable/
